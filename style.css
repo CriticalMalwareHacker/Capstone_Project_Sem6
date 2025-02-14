@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 
 * {
     padding: 0;
     box-sizing: border-box;
     margin: 0;
-    font-family: "PT Sans", serif;
 }
 
 body {
@@ -28,6 +29,7 @@ header {
     align-items: center;
     justify-content: space-between;
     z-index: 0;
+    font-family: "PT Sans", serif;
 }
 
 .navbar .links li {
@@ -101,23 +103,6 @@ header {
     color: black;
 }
 
-.main-title {
-    margin-top: 6rem;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-.main-title h1 {
-    font-size: 4.5rem;
-}
-
-.main-title h3 {
-    font-size: 1.6rem;
-    color: rgb(113, 113, 113);
-}
 
 /* Lava Lamp Animation Styles */
 .navbar .animation {
@@ -136,4 +121,74 @@ header {
     /* Center vertically */
     transform: translateY(0%);
     /* Center vertically */
+}
+
+.main-title {
+    margin-top: 4rem;
+    display: flex;
+    width: 100%;
+    max-width: fit-content;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+    text-align: center;
+    text-wrap-style: normal;
+}
+
+.main-title h1 {
+    font-family: "Inter", serif;
+    font-size: 4.2rem;
+}
+
+.main-title h3 {
+    font-family: "Inter", serif;
+    font-size: 1.6rem;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.hero {
+    margin-top: 5rem;
+    display: flex;
+    max-width: fit-content;
+    margin-left: 11%;
+    margin-right: 11%;
+    justify-content: space-between;
+    gap: 5rem;
+
+}
+
+.hero h2 {
+    font-family: "Inter", serif;
+    font-size: 3rem;
+
+}
+
+.hero .author-hero {
+    font-family: "Inter", serif;
+    font-size: 1.2rem;
+}
+
+.hero .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+
+}
+
+.hero .hero-image {
+    display: flex;
+    width: 100%;
+    max-height: auto;
+    max-width: 50%;
+    flex-shrink: 3;
+    object-fit: fill;
+}
+
+.hero .hero-image img {
+    display: flex;
+    height: 80%;
 }

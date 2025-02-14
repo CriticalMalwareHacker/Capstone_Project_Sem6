@@ -27,6 +27,16 @@
         <h1>Publishings from our team</h1>
         <h3>The latest tech news, interviews, technologies and much more</h3>
     </div>
+    <div class="hero">
+        <div class="hero-content">
+            <h2>China’s Open Source AI rivals OpenAI’s Chatgpt </h2>
+            <h4 class="author-hero">Urvaksh Bhagwager•30th Jan 2025 </h4>
+            <h4 class="tags">AI GENERATIVE AI DEEPSEEK</h4>
+        </div>
+        <div class="hero-image">
+            <img src="hero-image.png">
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const links = document.querySelectorAll('.navbar .links a');
@@ -36,16 +46,10 @@
             function positionAnimation(element) {
                 const linkRect = element.getBoundingClientRect();
                 const navbarRect = animation.parentElement.getBoundingClientRect();
-
-                // Calculate the position relative to the navbar
-                const left = linkRect.left - navbarRect.left;
-                const top = linkRect.top - navbarRect.top;
-
-                // Set the animation's position and size
-                animation.style.left = `${left}px`;
+                animation.style.left = `${linkRect.left - navbarRect.left}px`;
                 animation.style.width = `${linkRect.width}px`;
                 animation.style.height = `${linkRect.height}px`;
-                animation.style.top = `${top}px`;
+                animation.style.top = `${linkRect.top - navbarRect.top}px`;
             }
 
             if (initialLink) {
