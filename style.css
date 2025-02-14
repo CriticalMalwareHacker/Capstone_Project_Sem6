@@ -5,7 +5,6 @@
     box-sizing: border-box;
     margin: 0;
     font-family: "PT Sans", serif;
-
 }
 
 body {
@@ -18,13 +17,21 @@ header {
 }
 
 .navbar {
+    position: relative;
+    /* Added for positioning context */
     width: 100%;
     min-height: 3.75rem;
     max-width: 95%;
+    height: 4rem;
     margin: 1.6rem 2.4rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 0;
+}
+
+.navbar .links li {
+    position: relative;
 }
 
 .navbar .logo a img {
@@ -38,13 +45,23 @@ header {
     text-decoration: none;
     justify-content: space-between;
     list-style-type: none;
+    position: relative;
+    /* Added for z-index context */
+    z-index: 2;
+    /* Ensure links are above the animation */
 }
 
 .navbar .links a {
+    /* Add this */
+    z-index: 3;
+    display: inline-block;
+    /* Existing styles */
     text-decoration: none;
     padding: 8px 15px;
     transition: 0.5s;
     border-radius: 20px;
+    position: relative;
+
 }
 
 .navbar .links a:visited {
@@ -53,18 +70,17 @@ header {
 }
 
 .navbar .links a:hover {
-    background-color: rgba(193, 193, 193, 0.937);
+    background-color: transparent;
+    /* Removed hover background */
     padding: 8px 15px;
     border-radius: 20px;
 }
 
 .navbar .select {
-
-    background-color: rgba(193, 193, 193, 0.937);
+    background-color: transparent;
+    /* Removed background */
     padding: 8px 15px;
     border-radius: 20px;
-
-
 }
 
 .navbar .toggle_btn {
@@ -86,7 +102,7 @@ header {
 }
 
 .main-title {
-    margin-top: 4rem;
+    margin-top: 6rem;
     display: flex;
     width: 100%;
     justify-content: center;
@@ -100,5 +116,24 @@ header {
 
 .main-title h3 {
     font-size: 1.6rem;
-    color: rgb(113, 113, 113)
+    color: rgb(113, 113, 113);
+}
+
+/* Lava Lamp Animation Styles */
+.navbar .animation {
+    z-index: 1;
+    position: absolute;
+    background-color: rgba(193, 193, 193, 0.937);
+    /* Animation background color */
+    border-radius: 20px;
+    /* Matches link border-radius */
+    transition: all 0.3s ease;
+    /* Smooth transition */
+    /* Ensure animation is behind the links */
+    height: 40px;
+    /* Adjust height to match link height */
+    top: 50%;
+    /* Center vertically */
+    transform: translateY(0%);
+    /* Center vertically */
 }
