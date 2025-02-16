@@ -16,6 +16,10 @@
     ],
     "routes": [
         {
+            "src": "/(.*\\.(css|png|html))",
+            "dest": "/$1"
+        },
+        {
             "src": "/(.*)",
             "dest": "/home.html"
         }
