@@ -506,22 +506,20 @@ header {
         height: 10rem;
     }
 
-    .footer-question {
-        font-size: 1.2rem;
-    }
-
-    .footer-question1,
-    .footer-join1 {
+    .footer .footerright .flexR {
         font-size: 1rem;
+        text-align: center;
+        justify-content: CENTER;
     }
 
-    .footer-join,
-    .footer-join1 {
-        font-size: 1rem;
+    .footer .footerleft .flexL .footer-question {
+        font-size: 2rem;
+        text-align: center;
     }
 
-    .copyright {
-        font-size: 0.8rem;
+    .footer .footerleft .flexL .footer-join {
+        font-size: 2rem;
+        text-align: center;
     }
 
 }
