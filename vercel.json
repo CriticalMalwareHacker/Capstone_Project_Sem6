@@ -12,11 +12,15 @@
         {
             "src": "*.png",
             "use": "@vercel/static"
+        },
+        {
+            "src": "*.js",
+            "use": "@vercel/static"
         }
     ],
     "routes": [
         {
-            "src": "/(.*\\.(css|png|html))",
+            "src": "/(.*\\.(css|png|html|js))",
             "dest": "/$1"
         },
         {
