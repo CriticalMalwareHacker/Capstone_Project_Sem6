@@ -13,12 +13,12 @@
         <div class="logo"><a href="#"><img src="Blogy.tech.png"></a></div>
         <ul class="links">
             <li><a href="#" class="select">HOME</a></li>
-            <li><a href="#">ABOUT US</a></li>
-            <li><a href="#">BLOGS</a></li>
+            <li><a href="about_us.html">ABOUT US</a></li>
+            <li><a href="blogs.html" class="blogs-link">BLOGS</a></li>
             <li><a href="#">AUTHORS</a></li>
         </ul>
         <div class="animation"></div>
-        <a href="#" class="btn">JOIN OUR TEAM</a>
+        <a href="login.html" class="btn">Login or Signup</a>
         <div class="toggle_btn">
             <i class="fa-solid fa-bars"></i>
         </div>
@@ -164,7 +164,7 @@
         </div>
     </div>
     <div class="main-title1">
-        <h3>Read more blogs -></h3>
+        <h3><a style="text-decoration: none;color:black " href=" blogs.html">Read more blogs -></a></h3>
     </div>
     <div class="footerbg">
         <div class="footer">
@@ -185,36 +185,7 @@
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const links = document.querySelectorAll('.navbar .links a');
-            const animation = document.querySelector('.navbar .animation');
-            const initialLink = document.querySelector('.navbar .links a.select');
-
-            function positionAnimation(element) {
-                const linkRect = element.getBoundingClientRect();
-                const navbarRect = animation.parentElement.getBoundingClientRect();
-                animation.style.left = `${linkRect.left - navbarRect.left}px`;
-                animation.style.width = `${linkRect.width}px`;
-                animation.style.height = `${linkRect.height}px`;
-                animation.style.top = `${linkRect.top - navbarRect.top}px`;
-            }
-
-            if (initialLink) {
-                positionAnimation(initialLink);
-            }
-
-            links.forEach(link => {
-                link.addEventListener('mouseenter', () => {
-                    positionAnimation(link);
-                });
-                link.addEventListener('mouseleave', () => {
-                    if (initialLink) {
-                        positionAnimation(initialLink);
-                    }
-                });
-            });
-        });
+    <script src="navbar.js">
     </script>
 </body>
 

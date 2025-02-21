@@ -64,6 +64,7 @@ header {
     transition: 0.5s;
     border-radius: 20px;
     position: relative;
+    color: black;
 
 }
 
@@ -107,6 +108,60 @@ header {
 
 /* Lava Lamp Animation Styles */
 .navbar .animation {
+    z-index: 1;
+    position: absolute;
+    background-color: rgba(193, 193, 193, 0.937);
+    /* Animation background color */
+    border-radius: 20px;
+    /* Matches link border-radius */
+    transition: all 0.3s ease;
+    /* Smooth transition */
+    /* Ensure animation is behind the links */
+    height: 40px;
+    /* Adjust height to match link height */
+    top: 50%;
+    /* Center vertically */
+    transform: translateY(0%);
+    /* Center vertically */
+}
+
+.navbar .animation-about {
+    z-index: 1;
+    position: absolute;
+    background-color: rgba(193, 193, 193, 0.937);
+    /* Animation background color */
+    border-radius: 20px;
+    /* Matches link border-radius */
+    transition: all 0.3s ease;
+    /* Smooth transition */
+    /* Ensure animation is behind the links */
+    height: 40px;
+    /* Adjust height to match link height */
+    top: 50%;
+    /* Center vertically */
+    transform: translateY(0%);
+    /* Center vertically */
+}
+
+.navbar .animation-blogs {
+    z-index: 1;
+    position: absolute;
+    background-color: rgba(193, 193, 193, 0.937);
+    /* Animation background color */
+    border-radius: 20px;
+    /* Matches link border-radius */
+    transition: all 0.3s ease;
+    /* Smooth transition */
+    /* Ensure animation is behind the links */
+    height: 40px;
+    /* Adjust height to match link height */
+    top: 50%;
+    /* Center vertically */
+    transform: translateY(0%);
+    /* Center vertically */
+}
+
+.navbar .animation-authors {
     z-index: 1;
     position: absolute;
     background-color: rgba(193, 193, 193, 0.937);
@@ -331,7 +386,7 @@ header {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 90%;
     gap: 23rem;
     padding-top: 2rem;
     padding-bottom: 4rem;
