@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Navigate  // Add this import
+} from "react-router-dom";
 import blogplacehold from "./assets/Rectangle.png";
 import Home from "./Home.jsx";
 import Login from "./login.jsx";
@@ -10,16 +15,15 @@ function App() {
     return (
         <Router>
             <div className="app-container">
-                {/* Shared Navbar across pages */}
                 <Navbar />
-
-                {/* Define routes for your pages */}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/blogs" element={<Blogs />} />
                     <Route path="/authors" element={<Authors />} />
                     <Route path="/about" element={<AboutUs />} />
+                    {/* Add this catch-all route */}
+                    <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </div>
         </Router>

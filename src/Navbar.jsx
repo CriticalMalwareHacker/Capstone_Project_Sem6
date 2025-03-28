@@ -1,106 +1,52 @@
-import React, { useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import BlogyTech from "./assets/Blogy.tech.png";
 
 function Navbar() {
-    // Run your vanilla JS code after the component mounts
+    const animationRefs = useRef({
+        home: useRef(null),
+        about: useRef(null),
+        blogs: useRef(null),
+        authors: useRef(null)
+    });
+
     useEffect(() => {
-        // Copy your entire vanilla JS code from navbar.js here
-        const links = document.querySelectorAll('.navbar .links a');
-        const animation = document.querySelector('.navbar .animation');
-        const initialLink = document.querySelector('.navbar .links a.select');
+        const handleAnimation = (linkClass, animationRef) => {
+            const links = document.querySelectorAll(`.navbar .links a.${linkClass}`);
+            const animation = animationRef.current;
+            const initialLink = document.querySelector(`.navbar .links a.${linkClass}.active`);
 
-        function positionAnimation(element) {
-            const linkRect = element.getBoundingClientRect();
-            const navbarRect = animation.parentElement.getBoundingClientRect();
-            animation.style.left = `${linkRect.left - navbarRect.left}px`;
-            animation.style.width = `${linkRect.width}px`;
-            animation.style.height = `${linkRect.height}px`;
-            animation.style.top = `${linkRect.top - navbarRect.top}px`;
-        }
+            const positionAnimation = (element) => {
+                if (!element || !animation) return;
 
-        if (initialLink) {
-            positionAnimation(initialLink);
-        }
+                const linkRect = element.getBoundingClientRect();
+                const navbarRect = animation.parentElement.getBoundingClientRect();
 
-        links.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                positionAnimation(link);
+                animation.style.left = `${linkRect.left - navbarRect.left}px`;
+                animation.style.width = `${linkRect.width}px`;
+                animation.style.height = `${linkRect.height}px`;
+                animation.style.top = `${linkRect.top - navbarRect.top}px`;
+            };
+
+            if (initialLink) positionAnimation(initialLink);
+
+            links.forEach(link => {
+                link.addEventListener('mouseenter', () => positionAnimation(link));
+                link.addEventListener('mouseleave', () => positionAnimation(initialLink));
             });
-            link.addEventListener('mouseleave', () => {
-                if (initialLink) {
-                    positionAnimation(initialLink);
-                }
-            });
-        });
+        };
 
-        // Repeat for other animations as in your original navbar.js
+        // Initialize animations for each section
+        handleAnimation('home-link', animationRefs.current.home);
+        handleAnimation('about-link', animationRefs.current.about);
+        handleAnimation('blogs-link', animationRefs.current.blogs);
+        handleAnimation('authors-link', animationRefs.current.authors);
+
+        return () => {
+            // Cleanup event listeners if needed
+        };
     }, []);
-    useEffect(() => {
-        // Copy your entire vanilla JS code from navbar.js here
-        const links = document.querySelectorAll('.navbar .links a');
-        const animation = document.querySelector('.navbar .animation-blogs');
-        const initialLink = document.querySelector('.navbar .links a.blogs-link');
 
-        function positionAnimation(element) {
-            const linkRect = element.getBoundingClientRect();
-            const navbarRect = animation.parentElement.getBoundingClientRect();
-            animation.style.left = `${linkRect.left - navbarRect.left}px`;
-            animation.style.width = `${linkRect.width}px`;
-            animation.style.height = `${linkRect.height}px`;
-            animation.style.top = `${linkRect.top - navbarRect.top}px`;
-        }
-
-        if (initialLink) {
-            positionAnimation(initialLink);
-        }
-
-        links.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                positionAnimation(link);
-            });
-            link.addEventListener('mouseleave', () => {
-                if (initialLink) {
-                    positionAnimation(initialLink);
-                }
-            });
-        });
-
-        // Repeat for other animations as in your original navbar.js
-    }, []);
-    useEffect(() => {
-        // Copy your entire vanilla JS code from navbar.js here
-        const links = document.querySelectorAll('.navbar .links a');
-        const animation = document.querySelector('.navbar .animation-authors');
-        const initialLink = document.querySelector('.navbar .links a.authors-link');
-
-        function positionAnimation(element) {
-            const linkRect = element.getBoundingClientRect();
-            const navbarRect = animation.parentElement.getBoundingClientRect();
-            animation.style.left = `${linkRect.left - navbarRect.left}px`;
-            animation.style.width = `${linkRect.width}px`;
-            animation.style.height = `${linkRect.height}px`;
-            animation.style.top = `${linkRect.top - navbarRect.top}px`;
-        }
-
-        if (initialLink) {
-            positionAnimation(initialLink);
-        }
-
-        links.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                positionAnimation(link);
-            });
-            link.addEventListener('mouseleave', () => {
-                if (initialLink) {
-                    positionAnimation(initialLink);
-                }
-            });
-        });
-
-        // Repeat for other animations as in your original navbar.js
-    }, []);
-    // Return the same HTML structure as in your components
     return (
         <div className="navbar">
             <div className="logo">
@@ -108,16 +54,56 @@ function Navbar() {
                     <img src={BlogyTech} alt="Blogy.tech logo" />
                 </Link>
             </div>
+
             <ul className="links">
-                <li><Link to="/" className="select">HOME</Link></li>
-                <li><Link to="/about" className="about-link">ABOUT US</Link></li>
-                <li><Link to="/blogs" className="blogs-link">BLOGS</Link></li>
-                <li><Link to="/authors" className="authors-link">AUTHORS</Link></li>
+                <li>
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            `home-link ${isActive ? 'active' : ''}`
+                        }
+                    >
+                        HOME
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to="/about"
+                        className={({ isActive }) =>
+                            `about-link ${isActive ? 'active' : ''}`
+                        }
+                    >
+                        ABOUT US
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to="/blogs"
+                        className={({ isActive }) =>
+                            `blogs-link ${isActive ? 'active' : ''}`
+                        }
+                    >
+                        BLOGS
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to="/authors"
+                        className={({ isActive }) =>
+                            `authors-link ${isActive ? 'active' : ''}`
+                        }
+                    >
+                        AUTHORS
+                    </NavLink>
+                </li>
             </ul>
-            <div className="animation"></div>
-            <div className="animation-about"></div>
-            <div className="animation-blogs"></div>
-            <div className="animation-authors"></div>
+
+            {/* Animation elements */}
+            <div className="animation" ref={animationRefs.current.home}></div>
+            <div className="animation-about" ref={animationRefs.current.about}></div>
+            <div className="animation-blogs" ref={animationRefs.current.blogs}></div>
+            <div className="animation-authors" ref={animationRefs.current.authors}></div>
+
             <Link to="/login" className="btn">Login or Signup</Link>
             <div className="toggle_btn">
                 <i className="fa-solid fa-bars"></i>
