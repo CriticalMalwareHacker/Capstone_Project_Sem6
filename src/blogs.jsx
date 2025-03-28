@@ -13,7 +13,7 @@ export default function Blogs() {
     const postsPerPage = 6;
     useEffect(() => {
         client.fetch(
-            `*[_type == "post"]{
+            `*[_type == "post"]|order(publishedAt desc){
               title,
               slug,
               body,
