@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import client from "../client.js";
+import { sanityClient as client } from '../client';
 import BlockContent from '@sanity/block-content-to-react';
 import './Singlepost.css';
 

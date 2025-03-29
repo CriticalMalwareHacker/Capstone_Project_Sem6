@@ -1,5 +1,5 @@
 // client.js
-import { createClient } from '@sanity/client' // Named import
+import { createClient } from '@sanity/client'; // Named import
 
 const config = {
     projectId: import.meta.env.VITE_SANITY_PROJECT_ID,

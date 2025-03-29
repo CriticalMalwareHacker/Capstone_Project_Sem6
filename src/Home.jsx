@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import client from "../client.js";
+import { sanityClient as client } from '../client';
 import hero from "./assets/hero-image.png";
 
 export default function Home() {

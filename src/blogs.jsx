@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom"; // Optional: if using React Router for navigation
 import BlogyTech from "./assets/Blogy.tech.png";
 import { useState, useEffect } from "react"
-import client from "../client.js"
+import { sanityClient as client } from '../client';
 import blogplacehold from "./assets/Rectangle.png";
 
 
