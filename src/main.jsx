@@ -1,5 +1,6 @@
 import React, { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { sanityClient as client } from '../client';
 import App from "./App.jsx"
 import "./style.css" // Global CSS
 
