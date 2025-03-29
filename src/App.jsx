@@ -5,6 +5,9 @@ import {
     Navigate,
     useParams
 } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { sanityClient as client } from '../client';
+import hero from "./assets/hero-image.png";
 import Home from "./Home.jsx";
 import Login from "./login.jsx";
 import Blogs from "./blogs.jsx";
@@ -13,25 +16,6 @@ import AboutUs from "./about_us.jsx";
 import Navbar from "./Navbar.jsx";
 import Singlepost from "./Singlepost.jsx";
 
-// Add error boundary component
-class ErrorBoundary extends React.Component {
-    state = { hasError: false };
-
-    static getDerivedStateFromError(error) {
-        return { hasError: true };
-    }
-
-    componentDidCatch(error, errorInfo) {
-        console.error("Error caught:", error, errorInfo);
-    }
-
-    render() {
-        if (this.state.hasError) {
-            return <div className="error-fallback">Something went wrong. Please try again later.</div>;
-        }
-        return this.props.children;
-    }
-}
 
 function App() {
     return (
@@ -47,9 +31,9 @@ function App() {
                     <Route
                         path="/blog/:slug"
                         element={
-                            <PostErrorBoundary>
-                                <Singlepost />
-                            </PostErrorBoundary>
+
+                            <Singlepost />
+
                         }
                     />
 
