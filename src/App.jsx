@@ -11,6 +11,7 @@ import Blogs from "./blogs.jsx";
 import Authors from "./authors.jsx";
 import AboutUs from "./about_us.jsx";
 import Navbar from "./Navbar.jsx";
+import Singlepost from "./Singlepost.jsx";
 function App() {
     return (
         <Router>
@@ -19,6 +20,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/blog/:slug" element={<Singlepost />} />
                     <Route path="/blogs" element={<Blogs />} />
                     <Route path="/authors" element={<Authors />} />
                     <Route path="/about" element={<AboutUs />} />
