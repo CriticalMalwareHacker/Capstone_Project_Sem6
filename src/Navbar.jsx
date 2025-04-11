@@ -1,114 +1,133 @@
-import React, { useEffect, useRef } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import BlogyTech from "./assets/Blogy.tech.png";
+import React, { useState, useRef, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
+import BlogyTech from './assets/Blogy.tech.png'; // Adjust path as needed
+function Navbar({ onSearch }) {
+    const { currentUser, logout } = useAuth();
+    const navigate = useNavigate();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("darkmode") === "true");
+    const menuRef = useRef(null);
 
-function Navbar() {
-    const animationRefs = useRef({
-        home: useRef(null),
-        about: useRef(null),
-        blogs: useRef(null),
-        authors: useRef(null)
-    });
-
+    const handleLogout = () => {
+        logout();
+        navigate('/');
+        setIsMenuOpen(false);
+    };
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+        onSearch(e.target.value); // Pass the search query to parent component
+    };
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        // Navigate to the blogs page with the search query
+        navigate(`/blogs?search=${searchQuery}`);
+    };
+    const toggleDarkMode = () => {
+        const newDarkMode = !isDarkMode;
+        setIsDarkMode(newDarkMode);
+        document.body.classList.toggle('dark', newDarkMode);
+        localStorage.setItem("darkmode", newDarkMode);
+    };
     useEffect(() => {
-        const handleAnimation = (linkClass, animationRef) => {
-            const links = document.querySelectorAll(`.navbar .links a.${linkClass}`);
-            const animation = animationRef.current;
-            const initialLink = document.querySelector(`.navbar .links a.${linkClass}.active`);
-
-            const positionAnimation = (element) => {
-                if (!element || !animation) return;
-
-                const linkRect = element.getBoundingClientRect();
-                const navbarRect = animation.parentElement.getBoundingClientRect();
-
-                animation.style.left = `${linkRect.left - navbarRect.left}px`;
-                animation.style.width = `${linkRect.width}px`;
-                animation.style.height = `${linkRect.height}px`;
-                animation.style.top = `${linkRect.top - navbarRect.top}px`;
-            };
-
-            if (initialLink) positionAnimation(initialLink);
-
-            links.forEach(link => {
-                link.addEventListener('mouseenter', () => positionAnimation(link));
-                link.addEventListener('mouseleave', () => positionAnimation(initialLink));
-            });
-        };
-
-        // Initialize animations for each section
-        handleAnimation('home-link', animationRefs.current.home);
-        handleAnimation('about-link', animationRefs.current.about);
-        handleAnimation('blogs-link', animationRefs.current.blogs);
-        handleAnimation('authors-link', animationRefs.current.authors);
-
-        return () => {
-            // Cleanup event listeners if needed
-        };
+        if (localStorage.getItem("darkmode") === "true") {
+            document.body.classList.add('dark');
+        }
     }, []);
 
+    // Close menu when clicking outside
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsMenuOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [menuRef]);
+
     return (
-        <div className="navbar">
+        <nav className="navbar">
             <div className="logo">
-                <Link to="/">
-                    <img src={BlogyTech} alt="Blogy.tech logo" />
-                </Link>
+                <NavLink to="/">
+                    <img src={BlogyTech} alt="BlogyTech Logo" />
+                </NavLink>
             </div>
 
             <ul className="links">
-                <li>
-                    <NavLink
-                        to="/"
-                        className={({ isActive }) =>
-                            `home-link ${isActive ? 'active' : ''}`
-                        }
-                    >
-                        HOME
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/about"
-                        className={({ isActive }) =>
-                            `about-link ${isActive ? 'active' : ''}`
-                        }
-                    >
-                        ABOUT US
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/blogs"
-                        className={({ isActive }) =>
-                            `blogs-link ${isActive ? 'active' : ''}`
-                        }
-                    >
-                        BLOGS
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/authors"
-                        className={({ isActive }) =>
-                            `authors-link ${isActive ? 'active' : ''}`
-                        }
-                    >
-                        AUTHORS
-                    </NavLink>
-                </li>
+                <li><NavLink to="/">Home</NavLink></li>
+                <li><NavLink to="/blogs">Blogs</NavLink></li>
             </ul>
+            <form className="search-box" onSubmit={handleSearchSubmit}>
+                <input
+                    type="text"
+                    placeholder=" "
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                />
+                <button type="reset" onClick={() => setSearchQuery('')}></button>
 
-            {/* Animation elements */}
-            <div className="animation" ref={animationRefs.current.home}></div>
-            <div className="animation-about" ref={animationRefs.current.about}></div>
-            <div className="animation-blogs" ref={animationRefs.current.blogs}></div>
-            <div className="animation-authors" ref={animationRefs.current.authors}></div>
-
-            <Link to="/login" className="btn">Login or Signup</Link>
-            <div className="toggle_btn">
-                <i className="fa-solid fa-bars"></i>
+            </form>
+            <div className="mode-toggle">
+                <h6 className={`label-light ${isDarkMode ? '' : 'noselect'}`} onClick={() => !isDarkMode && toggleDarkMode()}>Light</h6>
+                <button className="toggle-switch" onClick={toggleDarkMode} title={isDarkMode ? "Go light" : "Go dark"}></button>
+                <h6 className={`label-dark ${isDarkMode ? 'noselect' : ''}`} onClick={() => isDarkMode && toggleDarkMode()}>Dark</h6>
             </div>
-        </div>
+            <div className="links">
+                {currentUser ? (
+                    <div className="profile-menu-container" ref={menuRef}>
+                        <div
+                            className="profile-trigger"
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        >
+                            {currentUser.username ? (
+                                <div className="user-avatar">
+                                    {currentUser.username.charAt(0).toUpperCase()}
+                                </div>
+                            ) : (
+                                <div className="user-avatar">U</div>
+                            )}
+                        </div>
+
+                        {isMenuOpen && (
+                            <div className="profile-dropdown">
+                                <div className="profile-header">
+                                    <span className="username">{currentUser.username}</span>
+                                    <span className="email">{currentUser.email}</span>
+                                </div>
+                                <ul className="profile-menu">
+                                    <li>
+                                        <NavLink to="/create" onClick={() => setIsMenuOpen(false)}>
+                                            Create Post
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to="/profile" onClick={() => setIsMenuOpen(false)}>
+                                            My Profile
+                                        </NavLink>
+                                    </li>
+                                    <li className="divider"></li>
+                                    <li>
+                                        <button onClick={handleLogout} className="logout-button">
+                                            Logout
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    <>
+                        <NavLink to="/signin" className="signin-button">Sign In</NavLink>
+                        <NavLink to="/signup" className="signup-button">Sign Up</NavLink>
+                    </>
+                )}
+            </div>
+        </nav>
     );
 }
 

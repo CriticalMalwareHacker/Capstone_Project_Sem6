@@ -35,6 +35,16 @@ header {
 .navbar .links li {
     position: relative;
     color: black;
+    padding: 4px 10px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.navbar .links li:hover {
+    background-color: lightgrey;
+    /* Removed hover background */
+    padding: 4px 10px;
+    border-radius: 20px;
 }
 
 .navbar .logo a img {
@@ -220,7 +230,7 @@ header {
 
 .hero h2 {
     font-family: "Inter", serif;
-    font-size: 3rem;
+    font-size: 2rem;
     padding: 2rem 1.3rem 1.3rem 0;
 
 }
@@ -240,16 +250,21 @@ header {
 
 .hero .hero-image {
     display: flex;
-    width: 100%;
-    max-height: auto;
+    /* Use a max-width if you want to limit the container to half the hero area */
     max-width: 50%;
-    flex-shrink: 3;
-    object-fit: fill;
+    width: 100%;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero .hero-image img {
-    display: flex;
-    height: 20rem;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* or 'contain' if you want the entire image visible */
+    border-radius: 0.5rem;
+    /* optional for rounded corners */
 }
 
 .ele {
@@ -276,6 +291,10 @@ header {
     background: linear-gradient(to top, rgb(226, 226, 226), white);
     padding: 1.5rem;
     border-radius: 1rem;
+}
+
+.hero:visited {
+    color: black;
 }
 
 .grid-container {
@@ -383,6 +402,24 @@ header {
     text-decoration: underline;
 }
 
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1 0 auto;
+}
+
+/* Footer container styles */
+.footer-container {
+    flex-shrink: 0;
+    width: 100%;
+    margin-top: 3rem;
+}
+
+/* Updated footer styles for better responsiveness */
 .footerbg {
     width: 100%;
     background: linear-gradient(to top, rgb(0, 255, 242), rgb(102, 102, 236), rgb(184, 2, 184), rgb(232, 38, 38));
@@ -393,10 +430,18 @@ header {
     justify-content: space-between;
     margin: 0 auto;
     max-width: 90%;
-    gap: 23rem;
-    padding-top: 2rem;
-    padding-bottom: 4rem;
+    padding: 2rem 1rem 4rem;
     color: white;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer .footerleft {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 2;
+    min-width: 250px;
 }
 
 .footer .footerright {
@@ -404,239 +449,668 @@ header {
     padding-top: 0.8rem;
     display: flex;
     flex-direction: column;
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer .footerleft .flexL .footer-question {
+    font-family: "Inter", serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer .footerleft .flexL .footer-join {
+    font-family: "Inter", serif;
+    font-size: 2.8rem;
+    text-decoration: underline;
+    color: white;
+}
+
+.footer .footerleft .copyright {
+    font-family: "Inter", serif;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.footer .footerright .flexR {
+    display: flex;
+    flex-direction: column;
 }
 
 .footer .footerright .flexR .footer-question1 {
     font-size: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 .footer .footerright .flexR .footer-join1 {
     font-size: 2rem;
     text-decoration: underline;
+    color: white;
 }
 
-.footer .footerleft {
-    padding-top: 0.8rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    text-wrap: wrap;
-    padding-bottom: 3rem;
-}
-
-.footer .footerleft .flexL .footer-question {
-    font-family: "Inter", serif;
-    font-size: 3rem;
-}
-
-.footer .footerleft .flexL .footer-join {
-    font-family: "Inter", serif;
-    font-size: 3.3rem;
-    text-decoration: underline;
-}
-
-.footer .footerleft .flexL .footer-join {
-    font-family: "Inter", serif;
-    font-size: 3.3rem;
-    text-decoration: underline;
-}
-
-.footer .footerleft .copyright {
-    font-family: "Inter", serif;
-    font-size: 1.8rem;
-    font-weight: normal;
-}
-
-.flexL {
-    padding-bottom: 2rem;
-}
-
-.footer-question1 {
-    white-space: nowrap;
-    display: inline-block;
-    text-align: right;
-}
-
-@media (max-width: 1200px) {
-    .hero {
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-
-    .hero .hero-image img {
-        display: flex;
-        height: 17rem;
-    }
-}
-
+/* Responsive adjustments */
 @media (max-width: 992px) {
-    .hero {
-        flex-wrap: wrap;
-        margin-left: 2%;
-        margin-right: 2%;
-        gap: 2rem;
-    }
-
-    .hero-image {
-        order: -1;
-        /* Move image above text */
-        max-width: 100% !important;
-        justify-content: center;
-    }
-
-    .hero .hero-image img {
-        display: flex;
-        height: 17rem;
-    }
-
     .footer {
         flex-direction: column;
-        gap: 1rem;
+        gap: 2rem;
+        padding: 2rem 1rem;
     }
 
-    .footer-question {
-        font-size: 1.5rem;
-        max-width: 100%;
+    .footer .footerleft .flexL .footer-question {
+        font-size: 2.2rem;
     }
 
-    .flexR {
-        align-items: flex-start;
-    }
-
-    .copyright {
-        text-align: center;
-        margin-top: 1.5rem;
+    .footer .footerleft .flexL .footer-join {
+        font-size: 2.4rem;
     }
 }
 
 @media (max-width: 768px) {
-    .hero-image {
-        display: none;
-        /* Hide image completely */
-        justify-content: center;
-    }
-
-    .hero {
-        margin: 5rem 1rem;
-        padding: 1rem;
-    }
-
-    .main-title h1 {
-        font-size: 3rem;
-    }
-
-    .hero .hero-image img {
-        display: flex;
-        height: 15rem;
-    }
-
     .footer {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .footer-question {
-        font-size: 1.5rem;
-        max-width: 100%;
-    }
-
-    .flexR {
-        align-items: flex-start;
-    }
-
-    .copyright {
         text-align: center;
-        margin-top: 1.5rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .main-title h1 {
-        font-size: 2.5rem;
     }
 
-    .hero h2 {
-        font-size: 2rem;
-        padding: 1rem 0;
-    }
-
-    .ele {
-        flex-wrap: wrap;
-    }
-
-    .hero .hero-image img {
-        display: flex;
-        height: 10rem;
-    }
-
+    .footer .footerleft,
+    .footer .footerright,
+    .footer .footerleft .flexL,
     .footer .footerright .flexR {
-        font-size: 1rem;
-        text-align: center;
-        justify-content: CENTER;
+        align-items: center;
     }
 
     .footer .footerleft .flexL .footer-question {
         font-size: 2rem;
-        text-align: center;
     }
 
     .footer .footerleft .flexL .footer-join {
-        font-size: 2rem;
-        text-align: center;
+        font-size: 2.2rem;
     }
 
+    .footer .footerleft .copyright {
+        font-size: 1.2rem;
+    }
+
+    .footer .footerright .flexR .footer-question1 {
+        font-size: 1.8rem;
+    }
+
+    .footer .footerright .flexR .footer-join1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 1.5rem 0.5rem 2.5rem;
+    }
+
+    .footer .footerleft .flexL .footer-question {
+        font-size: 1.8rem;
+    }
+
+    .footer .footerleft .flexL .footer-join {
+        font-size: 1.9rem;
+    }
+
+    .footer .footerleft .copyright {
+        font-size: 1rem;
+    }
+
+    .footer .footerright .flexR .footer-question1 {
+        font-size: 1.5rem;
+    }
+
+    .footer .footerright .flexR .footer-join1 {
+        font-size: 1.5rem;
+    }
 }
 
 /* pagination.css */
 
-.pagination-container {
-    margin-top: 2rem;
+.pagination {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
 }
 
-.pagination-button {
-    margin: 0 0.25rem;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #e5e5e5;
-    border-radius: 0.25rem;
-    background-color: white;
-    color: #333;
-    font-size: 0.875rem;
+.pagination li {
+    margin: 0 0.5rem;
+}
+
+.pagination li a {
     cursor: pointer;
-    transition: all 0.2s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    color: #333;
+    text-decoration: none;
 }
 
-.pagination-button:hover:not(:disabled) {
-    background-color: #f5f5f5;
-    border-color: #ccc;
+.pagination__link--active a {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
 }
 
-.pagination-button:disabled {
-    opacity: 0.5;
+.pagination__link--disabled a {
+    color: #ccc;
     cursor: not-allowed;
 }
 
-.pagination-prev,
-.pagination-next {
+
+/* Add this to your existing CSS file */
+
+.user-welcome {
+    padding: 8px 15px;
+    color: #555;
     font-weight: 500;
 }
 
-.pagination-number {
-    min-width: 2rem;
+.logout-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 8px 15px;
+    color: #555;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    color: #ff6b6b;
+}
+
+/* Make sure your mobile menu also works with the new items */
+@media (max-width: 768px) {
+
+    .user-welcome,
+    .logout-btn {
+        display: block;
+        padding: 10px 20px;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* Add these styles to your style.css file */
+
+/* Profile Menu Styles */
+.profile-menu-container {
+    position: relative;
+}
+
+.profile-trigger {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: rgba(193, 193, 193, 0.937);
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.user-avatar:hover {
+    background-color: #e5e5e5;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 220px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    z-index: 10;
+    margin-top: 0.5rem;
+    font-family: "PT Sans", serif;
+}
+
+.profile-header {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
+}
+
+.email {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+.profile-menu {
+    list-style-type: none;
+    padding: 0.5rem 0;
+}
+
+.profile-menu li {
+    padding: 0;
+}
+
+.profile-menu li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.profile-menu li a:hover {
+    background-color: #f5f5f5;
+}
+
+.divider {
+    height: 1px;
+    background-color: #e5e5e5;
+    margin: 0.5rem 0;
+}
+
+.logout-button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font-family: "PT Sans", serif;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    color: #ff6b6b;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.logout-button:hover {
+    background-color: #fff0f0;
+}
+
+.signin-button,
+.signup-button {
+    text-decoration: none;
+    padding: 8px 15px;
+    transition: 0.5s;
+    border-radius: 20px;
+    color: black;
+    margin-left: 1rem;
+}
+
+.signin-button:hover,
+.signup-button:hover {
+    background-color: rgba(193, 193, 193, 0.937);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-dropdown {
+        position: fixed;
+        top: 4.5rem;
+        right: 1rem;
+        width: 250px;
+    }
+}
+
+.search-box {
+    border: solid 0.1em #000000;
+    display: inline-block;
+    position: relative;
+    border-radius: 1.3em;
+}
+
+.search-box input[type=text] {
+    font-family: inherit;
+    font-weight: bold;
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0.3em 2.1em 0.3em 0.4em;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 2.5em;
+    transition: width 800ms cubic-bezier(0.68, -0.55, 0.27, 1.55) 150ms;
+}
+
+.search-box input[type=text]:focus {
+    outline: none;
+}
+
+.search-box input[type=text]:focus,
+.search-box input[type=text]:not(:placeholder-shown) {
+    width: 18em;
+    transition: width 800ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.search-box input[type=text]:focus+button[type=reset],
+.search-box input[type=text]:not(:placeholder-shown)+button[type=reset] {
+    transform: rotate(-45deg) translateY(0);
+    transition: transform 150ms ease-out 800ms;
+}
+
+.search-box input[type=text]:focus+button[type=reset]:after,
+.search-box input[type=text]:not(:placeholder-shown)+button[type=reset]:after {
+    opacity: 1;
+    transition: top 150ms ease-out 950ms, right 150ms ease-out 950ms, opacity 150ms ease 950ms;
+}
+
+.search-box button[type=reset] {
+    background-color: transparent;
+    width: 1.4em;
+    height: 1.4em;
+    border: 0;
+    padding: 0;
+    outline: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0.55em;
+    right: 0.55em;
+    transform: rotate(-45deg) translateY(2.2em);
+    transition: transform 400ms ease-out 400ms;
+}
+
+.search-box button[type=reset]:before,
+.search-box button[type=reset]:after {
+    content: "";
+    background-color: #000000;
+    width: 0.3em;
+    height: 1.4em;
+    position: absolute;
+}
+
+.search-box button[type=reset]:after {
+    transform: rotate(90deg);
+    opacity: 0;
+    transition: transform 150ms ease-out, opacity 150ms ease-out;
+}
+
+/* Dark Mode Variables */
+:root {
+    --gray-5: #010101;
+    /*dark*/
+    --gray-10: #040404;
+    --gray-15: #070808;
+    --gray-20: #0D0D0E;
+    --gray-25: #141516;
+    --gray-30: #1E2022;
+    --gray-35: #2D2F31;
+    --gray-40: #404346;
+    --gray-45: #5B5E62;
+    --gray-50: #7C8084;
+    --gray-55: #9DA1A5;
+    --gray-60: #B9BDC1;
+    --gray-65: #CDD1D5;
+    --gray-70: #DCE0E3;
+    --gray-75: #E7EAED;
+    --gray-80: #EFF2F5;
+    --gray-85: #F4F7FA;
+    --gray-90: #F7FAFD;
+    --gray-95: #FCFEFE;
+    /*light*/
+    --animate: 200ms;
+
+    /* Light mode colors */
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --card-bg: #ffffff;
+    --card-border: #e5e5e5;
+    --navbar-bg: #ffffff;
+}
+
+/* Dark mode colors */
+body.dark {
+    --background-color: var(--gray-30);
+    --text-color: var(--gray-80);
+    --card-bg: var(--gray-25);
+    --card-border: var(--gray-35);
+    --navbar-bg: var(--gray-25);
+
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Dark Mode Toggle Styles */
+.mode-toggle {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.label-dark {
+    letter-spacing: -0.15px;
+}
+
+.label-light {
+    letter-spacing: -0.031px;
+}
+
+.mode-toggle h6,
+body.dark .mode-toggle h6 {
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.label-dark,
+.label-light {
+    padding: 8px 12px;
+    min-width: 32px;
     text-align: center;
+    color: var(--gray-45);
+    cursor: pointer;
 }
 
-.pagination-active {
-    background-color: black;
-    color: white;
-    border-color: black;
+body.dark .label-dark,
+body.dark .label-light {
+    color: var(--gray-60);
 }
 
-.pagination-active:hover {
-    background-color: #333 !important;
-    border-color: #333 !important;
-    color: white !important;
+.label-dark:hover {
+    color: var(--gray-40);
+}
+
+.label-dark:active {
+    color: var(--gray-5);
+}
+
+body.dark .label-dark {
+    pointer-events: none;
+}
+
+body.dark .label-light:hover {
+    color: var(--gray-95);
+}
+
+body.dark .label-light:active {
+    color: var(--gray-65);
+}
+
+.toggle-switch {
+    margin: 0;
+    padding: 0;
+    width: 48px;
+    height: 28px;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    border-radius: 14px;
+    display: inline-block;
+    background: var(--gray-40);
+    cursor: pointer;
+}
+
+body.dark .toggle-switch {
+    width: 48px;
+}
+
+.toggle-switch,
+.toggle-switch:before,
+.toggle-switch:after {
+    transition: all var(--animate) ease-in-out;
+}
+
+body.dark .toggle-switch {
+    background: var(--gray-70);
+}
+
+.toggle-switch:before {
+    top: 4px;
+    left: 24px;
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    border-radius: 12px;
+    background: var(--gray-70);
+}
+
+body.dark .toggle-switch:before {
+    left: 4px;
+    background: var(--gray-35);
+}
+
+.toggle-switch:after {
+    content: "";
+    top: 14px;
+    right: 2px;
+    width: 1px;
+    height: 1px;
+    display: block;
+    position: absolute;
+    border-radius: 0.5px;
+    background: var(--gray-40);
+}
+
+body.dark .toggle-switch:after {
+    top: -2px;
+    right: 2px;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    background: var(--gray-70);
+}
+
+.toggle-switch:hover,
+.toggle-switch:hover:after {
+    background: var(--gray-35);
+}
+
+.toggle-switch:focus,
+.toggle-switch:active,
+.toggle-switch:active:after {
+    background: var(--gray-25);
+}
+
+body.dark .toggle-switch:hover,
+body.dark .toggle-switch:hover:after {
+    background: var(--gray-95);
+}
+
+body.dark .toggle-switch:focus,
+body.dark .toggle-switch:active,
+body.dark .toggle-switch:active:after {
+    background: var(--gray-65);
+}
+
+.noselect {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Dark mode adaptations for existing elements */
+body.dark .navbar {
+    background-color: var(--navbar-bg);
+}
+
+body.dark .navbar .links li a,
+body.dark .navbar .links li a:visited {
+    color: var(--text-color);
+}
+
+body.dark .grid-1 {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+body.dark .title,
+body.dark .name,
+body.dark .para-text {
+    color: var(--text-color);
+}
+
+body.dark .search-box {
+    border-color: var(--gray-60);
+}
+
+body.dark .search-box button[type=reset]:before,
+body.dark .search-box button[type=reset]:after {
+    background-color: var(--gray-60);
+}
+
+body.dark .profile-dropdown {
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .profile-header {
+    background-color: var(--gray-35);
+    border-color: var(--gray-40);
+}
+
+body.dark .username {
+    color: var(--gray-80);
+}
+
+body.dark .email {
+    color: var(--gray-60);
+}
+
+body.dark .profile-menu li a {
+    color: var(--gray-75);
+}
+
+body.dark .profile-menu li a:hover {
+    background-color: var(--gray-35);
+}
+
+body.dark .divider {
+    background-color: var(--gray-40);
+}
+
+body.dark .signin-button,
+body.dark .signup-button {
+    color: var(--gray-80);
+}
+
+.like-count {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #666;
 }
