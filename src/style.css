@@ -416,6 +416,7 @@ header {
 .footer-container {
     flex-shrink: 0;
     width: 100%;
+    margin: 0;
     margin-top: 3rem;
 }
 
@@ -1114,3 +1115,345 @@ body.dark .signup-button {
     font-size: 14px;
     color: #666;
 }
+/* Home Container */
+.home-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  
+  /* Hero Section */
+  .hero-section,
+  .achievements-section,
+  .events-section {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    padding: 3rem 5%;
+    text-align: center;
+  }
+  
+  .hero-content {
+    flex: 1;
+    padding-right: 2rem;
+  }
+  
+  .hero-title {
+    font-family: "Inter", serif;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .hero-description {
+    font-family: "Inter", serif;
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  .apply-button {
+    display: inline-block;
+    background-color: #e63946;
+    color: white;
+    padding: 0.8rem 2rem;
+    font-family: "Inter", serif;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .apply-button:hover {
+    background-color: #c1121f;
+  }
+  
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Section Headers */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  .section-title {
+    font-family: "Inter", serif;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .view-all-link {
+    font-family: "Inter", serif;
+    color: #4361ee;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .view-all-link:hover {
+    color: #3a0ca3;
+  }
+  
+  /* Achievements Section */
+   
+  
+  .achievements-grid,
+.events-list {
+  width: 100%;
+  box-sizing: border-box;
+}
+  
+  .achievement-card {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+  }
+  
+  .achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .achievement-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .achievement-content {
+    padding: 1.5rem;
+  }
+  
+  .achievement-title {
+    font-family: "Inter", serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.4;
+  }
+  
+  /* Events Section */
+   
+  
+   
+  
+  .event-item {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding-right: 1.5rem;
+  }
+  
+  .event-date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    height: 100px;
+    background-color: #f0f0f0;
+    text-align: center;
+    margin-right: 1.5rem;
+  }
+  
+  .date-month {
+    font-family: "Inter", serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .date-day {
+    font-family: "Inter", serif;
+    font-size: 2.2rem;
+    font-weight: bold;
+    line-height: 1;
+    margin: 0.3rem 0;
+  }
+  
+  .date-year {
+    font-family: "Inter", serif;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .event-details {
+    flex: 1;
+    padding: 1.5rem 0;
+  }
+  
+  .event-title {
+    font-family: "Inter", serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+  }
+  
+  .event-description {
+    font-family: "Inter", serif;
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  .event-arrow {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+  }
+  
+  .event-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .event-link:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .arrow-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Responsive Adjustments */
+   
+  
+  @media (max-width: 768px) {
+    .hero-section,
+    .achievements-section,
+    .events-section {
+      padding-left: 3%;
+      padding-right: 3%;
+    }
+  }
+    .hero-content {
+      padding-right: 0;
+      margin-bottom: 2rem;
+    }
+    
+    .achievements-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .event-item {
+      flex-direction: column;
+      padding-right: 0;
+    }
+    
+    .event-date-box {
+      width: 100%;
+      height: auto;
+      flex-direction: row;
+      padding: 1rem;
+      margin-right: 0;
+      justify-content: center;
+    }
+    
+    .date-month, .date-day, .date-year {
+      margin: 0 0.5rem;
+    }
+    
+    .event-details {
+      padding: 1.5rem;
+    }
+    
+    .event-arrow {
+      margin: 0 0 1.5rem 0;
+      justify-content: center;
+    }
+/* Loading indicator */
+.loading-indicator {
+    text-align: center;
+    padding: 2rem;
+    font-family: "Inter", serif;
+    color: #666;
+    font-size: 1.2rem;
+  }
+  
+  /* Error message */
+  .error-message {
+    text-align: center;
+    padding: 2rem;
+    font-family: "Inter", serif;
+    color: #e63946;
+    font-size: 1.1rem;
+  }
+  
+  /* News source styling */
+  .achievement-source {
+    font-family: "Inter", serif;
+    font-size: 0.8rem;
+    color: #777;
+    margin: 0.5rem 0;
+    font-style: italic;
+  }
+  
+  /* News description styling */
+  .achievement-description {
+    font-family: "Inter", serif;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.4;
+    margin: 0.8rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Read more link styling */
+  .read-more-link {
+    display: inline-block;
+    font-family: "Inter", serif;
+    color: #4361ee;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: color 0.2s ease;
+  }
+  
+  .read-more-link:hover {
+    color: #3a0ca3;
+    text-decoration: underline;
+  }

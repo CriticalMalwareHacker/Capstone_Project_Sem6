@@ -35,6 +35,7 @@ const postSchema = new mongoose.Schema({
     }]
 });
 
+const Post = mongoose.model('Post', postSchema);
 const commentSchema = new mongoose.Schema({
     content: {
         type: String,
