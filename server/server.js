@@ -8,7 +8,7 @@ const { router: authRouter } = require('./authRoutes');
 const postRoutes = require('./postRoutes');
 const commentRoutes = require('./commentRoutes');
 const app = express();
-
+const profileRoutes = require('./profileRoutes');
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -26,6 +26,6 @@ app.use('/api/auth', authRouter);
 app.use('/api/posts', postRoutes);
 app.use('/uploads', express.static('uploads'));
 app.use('/api/comments', commentRoutes);
-
+app.use('/api/profile', profileRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

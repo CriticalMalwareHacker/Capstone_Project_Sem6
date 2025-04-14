@@ -423,7 +423,7 @@ header {
 /* Updated footer styles for better responsiveness */
 .footerbg {
     width: 100%;
-    background: linear-gradient(to top, rgb(0, 255, 242), rgb(102, 102, 236), rgb(184, 2, 184), rgb(232, 38, 38));
+    background: lightgrey;
 }
 
 .footer {
@@ -456,20 +456,20 @@ header {
 
 .footer .footerleft .flexL .footer-question {
     font-family: "Inter", serif;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
 .footer .footerleft .flexL .footer-join {
     font-family: "Inter", serif;
-    font-size: 2.8rem;
+    font-size: 1.8rem;
     text-decoration: underline;
     color: white;
 }
 
 .footer .footerleft .copyright {
     font-family: "Inter", serif;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: normal;
 }
 
@@ -498,7 +498,7 @@ header {
     }
 
     .footer .footerleft .flexL .footer-question {
-        font-size: 2.2rem;
+        font-size: 1.5rem;
     }
 
     .footer .footerleft .flexL .footer-join {
@@ -678,18 +678,383 @@ header {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     overflow: hidden;
-    z-index: 10;
+    z-index: 100;
     margin-top: 0.5rem;
     font-family: "PT Sans", serif;
 }
 
+/* Profile Section Main Styles */
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: "Inter", sans-serif;
+    color: rgba(0, 0, 0, 0.8);
+    z-index: 5;
+}
+
+/* Profile Cover/Banner */
+.profile-cover {
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(to right, #e0f7fa, #80deea, #4dd0e1);
+    position: relative;
+}
+
+/* Profile Header Area */
 .profile-header {
-    padding: 1rem;
-    border-bottom: 1px solid #e5e5e5;
-    background-color: #f9f9f9;
+    padding: 0 24px;
+    position: relative;
+}
+
+/* Profile Avatar */
+.profile-avatar-container {
+    position: relative;
+    margin-top: -72px;
+    margin-bottom: 16px;
+    z-index: 2;
+}
+
+.profile-avatar {
+    width: 144px;
+    height: 144px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-initials {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Profile Information */
+.profile-info {
+    margin-bottom: 32px;
+}
+
+.profile-name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.profile-follower-count {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 16px;
+}
+
+.profile-bio {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    max-width: 680px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.profile-website {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 24px;
+}
+
+.profile-website a {
+    color: #1a8917;
+    text-decoration: none;
+}
+
+.profile-website a:hover {
+    text-decoration: underline;
+}
+
+/* Edit Profile Button */
+/* Button Styling */
+.action-button {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Primary Action Button - for main actions */
+.edit-profile-button,
+.create-post-button,
+.update-post-button {
+    background-color: #1a8917;
+    color: white;
+}
+
+.edit-profile-button:hover,
+.create-post-button:hover,
+.update-post-button:hover {
+    background-color: #0f730d;
+}
+
+/* Secondary Action Button - for secondary actions */
+.cancel-edit-button,
+.edit-post-button {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.cancel-edit-button:hover,
+.edit-post-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* Destructive Action Button - for delete actions */
+.delete-post-button {
+    background-color: transparent;
+    color: #e53935;
+    border: 1px solid rgba(229, 57, 53, 0.3);
+}
+
+.delete-post-button:hover {
+    background-color: rgba(229, 57, 53, 0.1);
+    border-color: rgba(229, 57, 53, 0.5);
+}
+
+/* Cover Image Edit Button */
+.cover-edit-button {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.cover-edit-button:hover {
+    background-color: white;
+    transform: scale(1.05);
+}
+
+.edit-cover-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+}
+
+/* Dark mode support */
+body.dark .edit-profile-button,
+body.dark .create-post-button,
+body.dark .update-post-button {
+    background-color: #4caf50;
+}
+
+body.dark .edit-profile-button:hover,
+body.dark .create-post-button:hover,
+body.dark .update-post-button:hover {
+    background-color: #388e3c;
+}
+
+body.dark .cancel-edit-button,
+body.dark .edit-post-button {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.dark .cancel-edit-button:hover,
+body.dark .edit-post-button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.dark .delete-post-button {
+    color: #ef5350;
+    border: 1px solid rgba(239, 83, 80, 0.3);
+}
+
+body.dark .delete-post-button:hover {
+    background-color: rgba(239, 83, 80, 0.1);
+}
+
+body.dark .cover-edit-button {
+    background-color: rgba(30, 32, 34, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark .cover-edit-button:hover {
+    background-color: var(--gray-25);
+}
+
+body.dark .edit-cover-button {
+    color: #ddd;
+}
+
+
+/* Profile Navigation */
+.profile-navigation {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 32px;
+}
+
+.nav-tabs {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-tab {
+    padding: 16px 0;
+    margin-right: 32px;
+    font-size: 1rem;
+    position: relative;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.nav-tab.active {
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: 500;
+}
+
+.nav-tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Content Section */
+.profile-content {
+    padding: 0 24px;
+}
+
+/* Posts List */
+.posts-list {
+    max-width: 680px;
+}
+
+.post-item {
+    margin-bottom: 48px;
     display: flex;
     flex-direction: column;
 }
+
+.post-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.post-excerpt {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.post-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+
+.post-meta {
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 48px 0;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.empty-state-message {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+.create-post-button {
+    display: inline-block;
+    background-color: #1a8917;
+    color: white;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.create-post-button:hover {
+    background-color: #0f730d;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-avatar-container {
+        margin-top: -50px;
+    }
+
+    .profile-name {
+        font-size: 2rem;
+    }
+
+    .profile-bio {
+        font-size: 1rem;
+    }
+
+    .nav-tab {
+        margin-right: 24px;
+        font-size: 0.9rem;
+    }
+
+    .post-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Dark Mode Support */
 
 .username {
     font-weight: bold;
@@ -1115,6 +1480,7 @@ body.dark .signup-button {
     font-size: 14px;
     color: #666;
 }
+
 /* Home Container */
 .home-container {
     width: 100%;
@@ -1123,12 +1489,12 @@ body.dark .signup-button {
     padding: 0;
     overflow-x: hidden;
     box-sizing: border-box;
-  }
-  
-  /* Hero Section */
-  .hero-section,
-  .achievements-section,
-  .events-section {
+}
+
+/* Hero Section */
+.hero-section,
+.achievements-section,
+.events-section {
     width: 100%;
     max-width: 100%;
     padding-left: 5%;
@@ -1137,29 +1503,29 @@ body.dark .signup-button {
     background-color: #f9f9f9;
     padding: 3rem 5%;
     text-align: center;
-  }
-  
-  .hero-content {
+}
+
+.hero-content {
     flex: 1;
     padding-right: 2rem;
-  }
-  
-  .hero-title {
+}
+
+.hero-title {
     font-family: "Inter", serif;
     font-size: 3rem;
     margin-bottom: 1.5rem;
     font-weight: bold;
-  }
-  
-  .hero-description {
+}
+
+.hero-description {
     font-family: "Inter", serif;
     font-size: 1.3rem;
     margin-bottom: 2rem;
     color: #555;
     line-height: 1.5;
-  }
-  
-  .apply-button {
+}
+
+.apply-button {
     display: inline-block;
     background-color: #e63946;
     color: white;
@@ -1172,99 +1538,99 @@ body.dark .signup-button {
     font-size: 1rem;
     text-decoration: none;
     transition: background-color 0.3s ease;
-  }
-  
-  .apply-button:hover {
+}
+
+.apply-button:hover {
     background-color: #c1121f;
-  }
-  
-  .hero-image {
+}
+
+.hero-image {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .hero-image img {
+}
+
+.hero-image img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-  }
-  
-  /* Section Headers */
-  .section-header {
+}
+
+/* Section Headers */
+.section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
     width: 100%;
-  }
-  
-  .section-title {
+}
+
+.section-title {
     font-family: "Inter", serif;
     font-size: 2rem;
     font-weight: bold;
-  }
-  
-  .view-all-link {
+}
+
+.view-all-link {
     font-family: "Inter", serif;
     color: #4361ee;
     text-decoration: none;
     font-weight: 500;
     font-size: 1rem;
     transition: color 0.3s ease;
-  }
-  
-  .view-all-link:hover {
-    color: #3a0ca3;
-  }
-  
-  /* Achievements Section */
-   
-  
-  .achievements-grid,
-.events-list {
-  width: 100%;
-  box-sizing: border-box;
 }
-  
-  .achievement-card {
+
+.view-all-link:hover {
+    color: #3a0ca3;
+}
+
+/* Achievements Section */
+
+
+.achievements-grid,
+.events-list {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.achievement-card {
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-color: white;
-  }
-  
-  .achievement-card:hover {
+}
+
+.achievement-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .achievement-image {
+}
+
+.achievement-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
-  }
-  
-  .achievement-content {
+}
+
+.achievement-content {
     padding: 1.5rem;
-  }
-  
-  .achievement-title {
+}
+
+.achievement-title {
     font-family: "Inter", serif;
     font-size: 1.2rem;
     font-weight: bold;
     margin: 0;
     line-height: 1.4;
-  }
-  
-  /* Events Section */
-   
-  
-   
-  
-  .event-item {
+}
+
+/* Events Section */
+
+
+
+
+.event-item {
     display: flex;
     align-items: center;
     background-color: white;
@@ -1272,9 +1638,9 @@ body.dark .signup-button {
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding-right: 1.5rem;
-  }
-  
-  .event-date-box {
+}
+
+.event-date-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1284,57 +1650,57 @@ body.dark .signup-button {
     background-color: #f0f0f0;
     text-align: center;
     margin-right: 1.5rem;
-  }
-  
-  .date-month {
+}
+
+.date-month {
     font-family: "Inter", serif;
     font-size: 1rem;
     font-weight: 500;
     color: #555;
-  }
-  
-  .date-day {
+}
+
+.date-day {
     font-family: "Inter", serif;
     font-size: 2.2rem;
     font-weight: bold;
     line-height: 1;
     margin: 0.3rem 0;
-  }
-  
-  .date-year {
+}
+
+.date-year {
     font-family: "Inter", serif;
     font-size: 0.9rem;
     color: #555;
-  }
-  
-  .event-details {
+}
+
+.event-details {
     flex: 1;
     padding: 1.5rem 0;
-  }
-  
-  .event-title {
+}
+
+.event-title {
     font-family: "Inter", serif;
     font-size: 1.2rem;
     font-weight: bold;
     margin: 0 0 0.5rem 0;
     line-height: 1.4;
-  }
-  
-  .event-description {
+}
+
+.event-description {
     font-family: "Inter", serif;
     font-size: 0.9rem;
     color: #555;
     margin: 0;
     line-height: 1.5;
-  }
-  
-  .event-arrow {
+}
+
+.event-arrow {
     display: flex;
     align-items: center;
     margin-left: 1rem;
-  }
-  
-  .event-link {
+}
+
+.event-link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1345,62 +1711,67 @@ body.dark .signup-button {
     color: #333;
     text-decoration: none;
     transition: background-color 0.3s ease;
-  }
-  
-  .event-link:hover {
+}
+
+.event-link:hover {
     background-color: #e0e0e0;
-  }
-  
-  .arrow-icon {
+}
+
+.arrow-icon {
     font-size: 1.2rem;
-  }
-  
-  /* Responsive Adjustments */
-   
-  
-  @media (max-width: 768px) {
+}
+
+/* Responsive Adjustments */
+
+
+@media (max-width: 768px) {
+
     .hero-section,
     .achievements-section,
     .events-section {
-      padding-left: 3%;
-      padding-right: 3%;
+        padding-left: 3%;
+        padding-right: 3%;
     }
-  }
-    .hero-content {
-      padding-right: 0;
-      margin-bottom: 2rem;
-    }
-    
-    .achievements-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .event-item {
-      flex-direction: column;
-      padding-right: 0;
-    }
-    
-    .event-date-box {
-      width: 100%;
-      height: auto;
-      flex-direction: row;
-      padding: 1rem;
-      margin-right: 0;
-      justify-content: center;
-    }
-    
-    .date-month, .date-day, .date-year {
-      margin: 0 0.5rem;
-    }
-    
-    .event-details {
-      padding: 1.5rem;
-    }
-    
-    .event-arrow {
-      margin: 0 0 1.5rem 0;
-      justify-content: center;
-    }
+}
+
+.hero-content {
+    padding-right: 0;
+    margin-bottom: 2rem;
+}
+
+.achievements-grid {
+    grid-template-columns: 1fr;
+}
+
+.event-item {
+    flex-direction: column;
+    padding-right: 0;
+}
+
+.event-date-box {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    padding: 1rem;
+    margin-right: 0;
+    justify-content: center;
+}
+
+.date-month,
+.date-day,
+.date-year {
+    margin: 0 0.5rem;
+}
+
+.event-details {
+    padding: 1.5rem;
+}
+
+.event-arrow {
+    margin: 0 0 1.5rem 0;
+    justify-content: center;
+}
+
 /* Loading indicator */
 .loading-indicator {
     text-align: center;
@@ -1408,28 +1779,28 @@ body.dark .signup-button {
     font-family: "Inter", serif;
     color: #666;
     font-size: 1.2rem;
-  }
-  
-  /* Error message */
-  .error-message {
+}
+
+/* Error message */
+.error-message {
     text-align: center;
     padding: 2rem;
     font-family: "Inter", serif;
     color: #e63946;
     font-size: 1.1rem;
-  }
-  
-  /* News source styling */
-  .achievement-source {
+}
+
+/* News source styling */
+.achievement-source {
     font-family: "Inter", serif;
     font-size: 0.8rem;
     color: #777;
     margin: 0.5rem 0;
     font-style: italic;
-  }
-  
-  /* News description styling */
-  .achievement-description {
+}
+
+/* News description styling */
+.achievement-description {
     font-family: "Inter", serif;
     font-size: 0.9rem;
     color: #555;
@@ -1439,10 +1810,10 @@ body.dark .signup-button {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-  
-  /* Read more link styling */
-  .read-more-link {
+}
+
+/* Read more link styling */
+.read-more-link {
     display: inline-block;
     font-family: "Inter", serif;
     color: #4361ee;
@@ -1451,9 +1822,443 @@ body.dark .signup-button {
     text-decoration: none;
     margin-top: 0.5rem;
     transition: color 0.2s ease;
-  }
-  
-  .read-more-link:hover {
+}
+
+.read-more-link:hover {
     color: #3a0ca3;
     text-decoration: underline;
-  }
+}
+
+/* Form container styling */
+.create-post-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.create-post-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.create-post-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Title input styling */
+.create-post-form input[type="text"] {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.create-post-form input[type="text"]:focus {
+    border-color: #4361ee;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+}
+
+/* File upload styling */
+.file-upload-container {
+    margin-bottom: 1.5rem;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 16px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease;
+}
+
+.custom-file-upload:hover {
+    background-color: #e6e6e6;
+}
+
+.file-name {
+    margin-left: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Image preview styling */
+.image-preview-container {
+    margin-top: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: #f9f9f9;
+}
+
+.image-preview {
+    max-width: 100%;
+    max-height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Publish button styling */
+.publish-button {
+    background-color: #1a8917;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.publish-button:hover {
+    background-color: #0f730d;
+}
+
+.publish-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Message styling */
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px 16px;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 12px 16px;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid #f5c6cb;
+}
+
+/* Heading styles */
+.rdw-editor-main h1 {
+    font-size: 2.5rem;
+    margin: 1.5rem 0;
+}
+
+.rdw-editor-main h2 {
+    font-size: 2rem;
+    margin: 1.3rem 0;
+}
+
+.rdw-editor-main h3 {
+    font-size: 1.75rem;
+    margin: 1.1rem 0;
+}
+
+.rdw-editor-main h4 {
+    font-size: 1.5rem;
+    margin: 0.9rem 0;
+}
+
+.rdw-editor-main h5 {
+    font-size: 1.25rem;
+    margin: 0.7rem 0;
+}
+
+.rdw-editor-main h6 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+/* Force black text */
+.rdw-editor-main,
+.editor-content {
+    color: #000 !important;
+}
+
+.rdw-editor-main h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 1.5rem 0;
+    color: #000;
+}
+
+.rdw-editor-main h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 1.2rem 0;
+    color: #404040;
+}
+
+.rdw-editor-main .public-DraftStyleDefault-block {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #000;
+}
+
+/* Dropdown styling */
+.rdw-block-dropdown {
+    min-width: 110px;
+}
+
+.rdw-dropdown-optionwrapper {
+    width: 150px !important;
+}
+
+.rdw-dropdownoption-active {
+    background: #f0f0f0;
+}
+
+/* Toolbar customization */
+.editor-toolbar {
+    border: 1px solid #ddd !important;
+    border-radius: 4px 4px 0 0;
+}
+
+.editor-wrapper {
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+/* Add these styles to style.css */
+
+.custom-block-dropdown {
+    position: relative;
+    font-family: "Inter", sans-serif;
+}
+
+.dropdown-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    min-width: 120px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.dropdown-arrow {
+    font-size: 10px;
+    margin-left: 8px;
+}
+
+.dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-option {
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-option:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown-option.active {
+    background-color: #e6f7ff;
+    font-weight: 500;
+}
+
+/* Fix profile menu overlap */
+.profile-dropdown {
+    z-index: 100;
+    /* Increased z-index from 10 to 100 */
+    position: absolute;
+    top: 100%;
+    right: 0;
+}
+
+/* Ensure profile section has a lower z-index */
+.profile-container {
+    margin-top: 5rem;
+    position: relative;
+    z-index: 5;
+}
+
+/* Profile avatar upload styles */
+.profile-avatar {
+    position: relative;
+    cursor: pointer;
+}
+
+.avatar-upload-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+}
+
+.profile-avatar:hover .avatar-upload-overlay {
+    opacity: 1;
+}
+
+/* Profile form input styles */
+.profile-bio-input,
+.profile-website-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    resize: vertical;
+}
+
+.profile-bio-input {
+    min-height: 100px;
+}
+
+body.dark .profile-bio-input,
+body.dark .profile-website-input {
+    background-color: var(--gray-25);
+    border-color: var(--gray-40);
+    color: var(--gray-80);
+}
+
+.profile-edit-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Improve text visibility in both light and dark modes */
+body .profile-name {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+body .profile-bio,
+body .profile-follower-count,
+body .profile-website {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+body.dark .profile-name {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.dark .profile-bio,
+body.dark .profile-follower-count,
+body.dark .profile-website {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Post text visibility */
+.post-title {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.post-excerpt {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+body.dark .post-title {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.dark .post-excerpt {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Add borders around posts */
+.post-item {
+    margin-bottom: 48px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.post-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+body.dark .post-item {
+    border-color: var(--gray-40);
+}
+
+body.dark .post-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Like count styling similar to blogs.jsx */
+.like-count {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #666;
+    margin-top: 8px;
+}
+
+body.dark .like-count {
+    color: var(--gray-60);
+}
+
+.save-button {
+    background-color: transparent;
+    border: 1px solid #3498db;
+    color: #3498db;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.save-button.saved {
+    background-color: #3498db;
+    color: white;
+}
+
+.save-button .icon {
+    margin-left: 5px;
+}
+
+.author-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.author-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}

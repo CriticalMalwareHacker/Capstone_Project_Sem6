@@ -45,7 +45,6 @@ function Blogs() {
 
     return (
         <>
-            <h1>You are viewing {filteredPosts.length} blog posts</h1>
             <div className="grid-container">
                 {filteredPosts.map((post, index) => (
                     <Link
@@ -69,7 +68,7 @@ function Blogs() {
                             </p>
                             <h2 className="title">{post.title}</h2>
                             <p className="para-text">
-                                {post.content.substring(0, 150)}...
+                                <div className="para-text" dangerouslySetInnerHTML={{ __html: post.content.substring(0, 150) + '...' }} />
                             </p>
                             <div className="tags">
                                 <div className="tag-1">

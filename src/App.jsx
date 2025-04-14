@@ -50,7 +50,6 @@ function App() {
                             <Route path="/MyBlogs" element={<MyBlogs />} />
                             <Route path="/profile" element={<Profile />} />
                             <Route path="/edit-post/:id" element={<EditPost />} />
-
                         </Routes>
                     </main>
                     <Footer />

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import heroImage from "./assets/hero-image.png";
+import heroImage from "./assets/blogging1.jpg";
 
 // For events data (keeping it static for now)
 const eventsData = [
@@ -71,32 +71,32 @@ export default function Home() {
       try {
         console.log("Starting news fetch...");
         const API_KEY = "8df2a2aa3a924c5ba01a2c6e06f6ad81";
-        
+
         // Using a CORS proxy to avoid CORS issues with NewsAPI
         const corsProxyUrl = "https://api.allorigins.win/raw?url=";
         const newsApiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
         const encodedUrl = encodeURIComponent(newsApiUrl);
-        
+
         console.log("Making API request through CORS proxy...");
         const response = await fetch(`${corsProxyUrl}${encodedUrl}`);
-        
+
         console.log("API Response Status:", response.status);
-        
+
         if (!response.ok) {
           const errorText = await response.text();
           console.error("Error response from API:", errorText);
           throw new Error(`API error: ${response.status}`);
         }
-        
+
         const data = await response.json();
         console.log("API Response Data:", data);
-        
+
         // Check if we have articles
         if (!data.articles || data.articles.length === 0) {
           console.warn("No articles found in API response");
           throw new Error("No articles found");
         }
-        
+
         // Transform the API response to match your achievements data structure
         const formattedNews = data.articles.slice(0, 3).map((article, index) => ({
           id: index + 1,
@@ -107,21 +107,21 @@ export default function Home() {
           source: article.source?.name || "Unknown source",
           publishedAt: article.publishedAt
         }));
-        
+
         console.log("Formatted News:", formattedNews);
         setAchievements(formattedNews);
         setLoading(false);
       } catch (error) {
         console.error("Error in news fetch:", error);
         setError(`Failed to load latest news: ${error.message}. Using fallback data.`);
-        
+
         // Use fallback data if API fails
         console.log("Using fallback news data");
         setAchievements(fallbackNews);
         setLoading(false);
       }
     };
-    
+
     fetchNews();
   }, []);
 
@@ -130,9 +130,9 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
-          <h1 className="hero-title">Welcome to Our Institution</h1>
-          <p className="hero-description">Empowering students with cutting-edge technology and innovation</p>
-          <Link to="/apply" className="apply-button">APPLY NOW</Link>
+          <h1 className="hero-title">Welcome to Our Blog Website</h1>
+          <p className="hero-description">Read the latest blogs on technology</p>
+          <Link to="/blogs" className="apply-button">Read Blogs</Link>
         </div>
         <div className="hero-image">
           <img src={heroImage} alt="Campus Technology" />
@@ -145,7 +145,7 @@ export default function Home() {
           <h2 className="section-title">Latest News</h2>
           <Link to="/news" className="view-all-link">View all</Link>
         </div>
-        
+
         {loading ? (
           <div className="loading-indicator">Loading latest news...</div>
         ) : error ? (
@@ -154,11 +154,11 @@ export default function Home() {
           <div className="achievements-grid">
             {achievements.map((item) => (
               <div key={item.id} className="achievement-card">
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
-                  className="achievement-image" 
-                  onError={(e) => {e.target.src = "https://picsum.photos/seed/fallback/600/400"}}
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="achievement-image"
+                  onError={(e) => { e.target.src = "https://picsum.photos/seed/fallback/600/400" }}
                 />
                 <div className="achievement-content">
                   <h3 className="achievement-title">{item.title}</h3>
@@ -182,7 +182,7 @@ export default function Home() {
           <h2 className="section-title">Events</h2>
           <Link to="/events" className="view-all-link">View all</Link>
         </div>
-        
+
         <div className="events-list">
           {eventsData.map((event) => {
             const { day, month, year } = formatDate(event.date);

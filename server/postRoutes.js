@@ -237,6 +237,17 @@ router.post('/:id/like', authMiddleware, async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 });
+// Get posts by a specific author
+router.get('/author/:userId', async (req, res) => {
+    try {
+        const posts = await Post.find({ author: req.params.userId })
+            .populate('author', 'username')
+            .sort({ publishedAt: -1 });
+        res.json(posts);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+});
 
 
 module.exports = router;
