@@ -12,9 +12,20 @@ const userSchema = new mongoose.Schema({
     bio: { type: String },
     website: { type: String },
     location: { type: String },
+    socialLinks: {
+        twitter: { type: String },
+        github: { type: String },
+        linkedin: { type: String },
+        instagram: { type: String }
+    },
+    displayName: { type: String },
+    profession: { type: String },
     savedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
-    createdAt: { type: Date, default: Date.now }
+    createdAt: { type: Date, default: Date.now },
+    followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 });
+
 
 
 

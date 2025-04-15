@@ -2,7 +2,8 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const { User } = require('./models');
+const { User, Post } = require('./models');
+const mongoose = require('mongoose');
 const { authMiddleware } = require('./authRoutes');
 const router = express.Router();
 
@@ -170,13 +171,88 @@ router.get('/saved', authMiddleware, async (req, res) => {
 });
 router.get('/:userId', async (req, res) => {
     try {
-        const user = await User.findById(req.params.userId).select('-password');
-        if (!user) {
+        const user = await User.findById(req.params.userId)
+            .select('-password -email')
+            .populate({
+                path: 'savedPosts',
+                select: 'title slug',
+                options: { limit: 5 }
+            })
+            .populate({
+                path: 'followers',
+                select: 'username avatarUrl',
+                options: { limit: 5 }
+            })
+            .populate({
+                path: 'following',
+                select: 'username avatarUrl',
+                options: { limit: 5 }
+            });
+
+        if (!mongoose.Types.ObjectId.isValid(req.params.userId)) {
             return res.status(404).json({ message: 'User not found' });
         }
-        res.json(user);
+
+        // Get post count
+        const postCount = await Post.countDocuments({ author: req.params.userId });
+
+        // Add post count to user object
+        const userWithStats = {
+            ...user._doc,
+            postCount
+        };
+
+        res.json(userWithStats);
     } catch (error) {
         console.error('Get profile error:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+// Add to profileRoutes.js
+router.post('/follow/:userId', authMiddleware, async (req, res) => {
+    try {
+        if (req.params.userId === req.user._id.toString()) {
+            return res.status(400).json({ message: 'You cannot follow yourself' });
+        }
+
+        const userToFollow = await User.findById(req.params.userId);
+        if (!userToFollow) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const currentUser = await User.findById(req.user._id);
+
+        // Check if already following
+        const isFollowing = currentUser.following.includes(req.params.userId);
+
+        if (isFollowing) {
+            // Unfollow
+            await User.findByIdAndUpdate(req.user._id,
+                { $pull: { following: req.params.userId } }
+            );
+            await User.findByIdAndUpdate(req.params.userId,
+                { $pull: { followers: req.user._id } }
+            );
+        } else {
+            // Follow
+            await User.findByIdAndUpdate(req.user._id,
+                { $addToSet: { following: req.params.userId } }
+            );
+            await User.findByIdAndUpdate(req.params.userId,
+                { $addToSet: { followers: req.user._id } }
+            );
+        }
+
+        // Get updated followers list
+        const updatedUser = await User.findById(req.params.userId)
+            .populate('followers', 'username avatarUrl');
+
+        res.json({
+            isFollowing: !isFollowing,
+            followers: updatedUser.followers
+        });
+    } catch (error) {
+        console.error('Follow error:', error);
         res.status(500).json({ message: 'Server error' });
     }
 });

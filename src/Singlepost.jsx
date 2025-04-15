@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { CommentSection } from 'react-comments-section';
 import { useAuth } from './AuthContext';
+import { Link } from 'react-router-dom';
 import 'react-comments-section/dist/index.css';
 import "./Singlepost.css";
 
@@ -201,7 +202,23 @@ export default function Singlepost() {
     if (error) return <div>Error: {error}</div>;
 
     return (
+
         <section>
+            <div className="post-author">
+                <Link to={`/profile/${post.author?._id}`} className="author-link">
+                    <div className="author-info">
+                        {post.author?.avatarUrl && (
+                            <img
+                                src={post.author.avatarUrl}
+                                alt={post.author?.username || 'Unknown'}
+                                className="author-avatar"
+                            />
+                        )}
+                        <span className="author-name">{post.author?.username || 'Unknown'}</span>
+                    </div>
+                </Link>
+                <span className="post-date">{new Date(post.publishedAt).toLocaleDateString()}</span>
+            </div>
             <h1>{post.title}</h1>
             {post.image && (
                 <div className="image-container">

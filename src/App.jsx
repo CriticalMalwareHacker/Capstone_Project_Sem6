@@ -18,6 +18,7 @@ import CreatePost from "./CreatePost.jsx";
 import MyBlogs from "./my-blogs.jsx";
 import Profile from './Profile';
 import EditPost from './EditPost';
+import ViewProfile from './ViewProfile.jsx';
 import React, { useState, useEffect } from 'react';
 
 
@@ -50,6 +51,9 @@ function App() {
                             <Route path="/MyBlogs" element={<MyBlogs />} />
                             <Route path="/profile" element={<Profile />} />
                             <Route path="/edit-post/:id" element={<EditPost />} />
+                            <Route path="/profile/:userId" element={<ViewProfile />} />
+                            <Route path="/profile" element={<Profile />
+                            } />
                         </Routes>
                     </main>
                     <Footer />
