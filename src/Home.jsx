@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import heroImage from "./assets/blogging1.jpg";
+import Tanay from "./assets/tanay.jpg";
+import Monil from "./assets/monil.jpg";
+import Urvaksh from "./assets/urvaksh.jpeg";
 
 // For events data (keeping it static for now)
 const eventsData = [
@@ -207,6 +210,51 @@ export default function Home() {
           })}
         </div>
       </section>
+      <section className="about-us-section">
+        <div className="about-header">
+          <h2>Our Team at blogy.tech</h2>
+          <p className="about-description">
+            Meet the dedicated team at Our Company, revolutionizing the industry with innovative,
+            beautiful, and sustainable solutions for our customers.
+          </p>
+        </div>
+
+        <div className="team-members">
+          <div className="team-member">
+            <div className="member-image">
+              <img src={Monil} alt="Team Member" />
+            </div>
+            <h3 className="member-name">Monil Shah</h3>
+            <p className="member-title">Backend specialist</p>
+            <a href="#" className="social-link">
+              <i className="fab fa-linkedin"></i>
+            </a>
+          </div>
+
+          <div className="team-member">
+            <div className="member-image">
+              <img src={Tanay} alt="Team Member" />
+            </div>
+            <h3 className="member-name">Tanay Kumar</h3>
+            <p className="member-title">Lead Developer and an all-rounder</p>
+            <a href="#" className="social-link">
+              <i className="fab fa-linkedin"></i>
+            </a>
+          </div>
+
+          <div className="team-member">
+            <div className="member-image">
+              <img src={Urvaksh} alt="Team Member" />
+            </div>
+            <h3 className="member-name">Urvaksh Bhagwager</h3>
+            <p className="member-title">UI/UX designer and Frontend dev</p>
+            <a href="#" className="social-link">
+              <i className="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
+
