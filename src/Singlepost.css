@@ -312,3 +312,132 @@ img {
 .like-button.liked:hover {
     background-color: #fce4ec;
 }
+
+/* Author and Date Styling */
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.author {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.date {
+    font-size: 14px;
+    color: #999;
+}
+
+/* Add 'Author' text before the author name */
+.author::before {
+    content: 'Author: ';
+    font-weight: 400;
+    color: #666;
+}
+
+/* Dark Mode Styles for Author and Date */
+body.dark .author {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color, #EFF2F5);
+}
+
+body.dark .date {
+    font-size: 14px;
+    color: var(--text-muted-color, #999);
+}
+
+/* Add 'Author' text before the author name in dark mode */
+body.dark .author::before {
+    content: 'Author: ';
+    font-weight: 400;
+    color: var(--text-muted-color, #999);
+}
+
+/* Dark Mode Styles */
+body.dark {
+    background-color: #121212;
+}
+
+body.dark section {
+    background-color: #1e1e1e;
+}
+
+body.dark h1 {
+    color: #ffffff;
+}
+
+body.dark .image-caption {
+    color: #aaaaaa;
+}
+
+body.dark .post-body {
+    color: #e0e0e0;
+}
+
+body.dark .post-body h2 {
+    color: #ffffff;
+}
+
+body.dark .post-body blockquote {
+    color: #aaaaaa;
+    border-left-color: #444;
+}
+
+body.dark .post-body pre {
+    background: #2d2d2d;
+}
+
+body.dark .post-body a {
+    color: #4da3ff;
+}
+
+body.dark .post-body a:hover {
+    color: #6fb6ff;
+}
+
+body.dark .comments-section {
+    border-top-color: #333;
+}
+
+body.dark .comment-form textarea {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark .comment {
+    border-bottom-color: #333;
+}
+
+body.dark .comment-date {
+    color: #aaaaaa;
+}
+
+body.dark .reply {
+    background-color: #2a2a2a;
+}
+
+body.dark .reply-form textarea {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark .like-button {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark .like-button:hover {
+    background-color: #444;
+}
+
+body.dark .like-button.liked {
+    background-color: #3d2e3d;
+    color: #ff4081;
+}

@@ -204,6 +204,7 @@ export default function Singlepost() {
     return (
 
         <section>
+            <h1>{post.title}</h1>
             <div className="post-author">
                 <Link to={`/profile/${post.author?._id}`} className="author-link">
                     <div className="author-info">
@@ -219,20 +220,12 @@ export default function Singlepost() {
                 </Link>
                 <span className="post-date">{new Date(post.publishedAt).toLocaleDateString()}</span>
             </div>
-            <h1>{post.title}</h1>
+
             {post.image && (
                 <div className="image-container">
                     <img src={post.image} alt={post.title} />
                 </div>
             )}
-            <div className="post-meta">
-                <p>Author: {post.author?.username || 'Unknown'}</p>
-
-
-                <p className="date">
-                    {new Date(post.publishedAt).toLocaleDateString()}
-                </p>
-            </div>
             <div
                 className="post-body"
                 dangerouslySetInnerHTML={{ __html: post.content }}

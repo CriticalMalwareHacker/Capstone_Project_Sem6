@@ -1982,10 +1982,7 @@ body.dark .signup-button {
 }
 
 /* Force black text */
-.rdw-editor-main,
-.editor-content {
-    color: #000 !important;
-}
+
 
 .rdw-editor-main h1 {
     font-size: 2.5rem;
@@ -2001,11 +1998,8 @@ body.dark .signup-button {
     color: #404040;
 }
 
-.rdw-editor-main .public-DraftStyleDefault-block {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #000;
-}
+
+
 
 /* Dropdown styling */
 .rdw-block-dropdown {
@@ -2385,4 +2379,380 @@ body.dark .member-title {
     .team-members {
         gap: 2rem;
     }
+}
+
+.file-upload-section {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.file-upload-section h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.file-upload-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.upload-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #4a90e2;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.custom-file-upload:hover {
+    background-color: #3a7bc8;
+}
+
+.file-name {
+    color: #555;
+    font-size: 0.9em;
+}
+
+.image-preview-container {
+    margin-top: 10px;
+    max-width: 100%;
+}
+
+.image-preview {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.publish-button {
+    margin-top: 20px;
+}
+
+/* Dark Mode for Rich Text Editor */
+body.dark .rdw-editor-main {
+    background-color: var(--card-bg, #1E2022);
+    color: var(--text-color, #EFF2F5) !important;
+    border-color: var(--gray-40);
+}
+
+/* Editor toolbar */
+body.dark .rdw-editor-toolbar {
+    background-color: var(--gray-25, #141516);
+    border-color: var(--gray-40);
+}
+
+/* Dropdown menus */
+body.dark .rdw-dropdown-wrapper {
+    background-color: var(--gray-30, #1E2022);
+    border-color: var(--gray-40);
+    color: var(--text-color, #EFF2F5);
+}
+
+body.dark .rdw-dropdown-optionwrapper {
+    background-color: var(--gray-25, #141516);
+    border-color: var(--gray-40);
+}
+
+body.dark .rdw-dropdownoption-default {
+    color: var(--text-color, #EFF2F5);
+}
+
+body.dark .rdw-dropdownoption-highlighted {
+    background-color: var(--gray-35, #2D2F31);
+}
+
+/* Toolbar buttons */
+body.dark .rdw-option-wrapper {
+    background-color: var(--gray-30, #1E2022);
+    border-color: var(--gray-40);
+}
+
+body.dark .rdw-option-wrapper:hover {
+    background-color: var(--gray-35, #2D2F31);
+}
+
+body.dark .rdw-option-active {
+    background-color: var(--gray-40, #404346);
+}
+
+/* Handle text color in editor when in dark mode */
+body.dark .public-DraftStyleDefault-block {
+    color: var(--text-color, #EFF2F5);
+}
+
+/* Fix headings in dark mode */
+body.dark .rdw-editor-main h1,
+body.dark .rdw-editor-main h2,
+body.dark .rdw-editor-main h3,
+body.dark .rdw-editor-main h4,
+body.dark .rdw-editor-main h5,
+body.dark .rdw-editor-main h6 {
+    color: var(--text-color, #EFF2F5);
+}
+
+/* Link controls */
+body.dark .rdw-link-modal,
+body.dark .rdw-embedded-modal,
+body.dark .rdw-image-modal {
+    background-color: var(--card-bg, #1E2022);
+    border-color: var(--gray-40);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .rdw-link-modal-input,
+body.dark .rdw-embedded-modal-input,
+body.dark .rdw-image-modal-url-input {
+    background-color: var(--gray-25, #141516);
+    border-color: var(--gray-40);
+    color: var(--text-color, #EFF2F5);
+}
+
+body.dark .rdw-link-modal-buttonsection button,
+body.dark .rdw-embedded-modal-btn,
+body.dark .rdw-image-modal-btn {
+    background-color: var(--gray-30, #1E2022);
+    color: var(--text-color, #EFF2F5);
+    border-color: var(--gray-40);
+}
+
+body.dark .rdw-link-modal-buttonsection button:hover,
+body.dark .rdw-embedded-modal-btn:hover,
+body.dark .rdw-image-modal-btn:hover {
+    background-color: var(--gray-35, #2D2F31);
+}
+
+/* Dark mode for the post title input */
+body.dark .create-post-form input[type="text"] {
+    background-color: var(--card-bg, #1E2022);
+    color: var(--text-color, #EFF2F5);
+    border-color: var(--gray-40, #404346);
+}
+
+body.dark .create-post-form input[type="text"]:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* Dark mode for the white container */
+body.dark .create-post-form {
+    background-color: var(--card-bg, #1E2022);
+    color: var(--text-color, #EFF2F5);
+    border-color: var(--gray-40, #404346);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Also make sure the title input field and buttons are styled properly */
+body.dark .create-post-form label {
+    color: var(--text-color, #EFF2F5);
+}
+
+/* Ensure the "Add Featured Image" section is styled */
+body.dark .file-upload-section {
+    background-color: var(--card-bg, #1E2022);
+    border-color: var(--gray-40, #404346);
+}
+
+body.dark .file-upload-section h3 {
+    color: var(--text-color, #EFF2F5);
+}
+
+/* Make sure the "Choose File" button is visible */
+body.dark .choose-file-btn {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    border-color: var(--gray-40, #404346);
+}
+
+body.dark .choose-file-btn:hover {
+    background-color: #34495e;
+}
+
+/* Dark mode for Create Post heading */
+body.dark .create-post-container h1,
+body.dark .create-post-container h2 {
+    color: var(--text-color, #EFF2F5);
+}
+
+/* Make sure the entire container has proper dark mode */
+body.dark .create-post-container {
+    background-color: var(--background-color, #121212);
+    color: var(--text-color, #EFF2F5);
+}
+
+/* Ensure the form properly respects dark mode */
+body.dark .create-post-form {
+    background-color: var(--card-bg, #1E2022);
+    color: var(--text-color, #EFF2F5);
+    border-color: var(--gray-40, #404346);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode styles for nav-tab */
+body.dark .nav-tab {
+    color: var(--text-color, #EFF2F5) !important;
+}
+
+body.dark .nav-tab.active {
+    color: var(--text-color, #EFF2F5) !important;
+}
+
+body.dark .nav-tab.active::after {
+    background-color: var(--text-color, #EFF2F5);
+}
+
+/* Dark Mode Variables */
+:root {
+    --gray-5: #010101;
+    --gray-10: #040404;
+    --gray-15: #070808;
+    --gray-20: #0D0D0E;
+    --gray-25: #141516;
+    --gray-30: #1E2022;
+    --gray-35: #2D2F31;
+    --gray-40: #404346;
+    --gray-45: #5B5E62;
+    --gray-50: #7C8084;
+    --gray-55: #9DA1A5;
+    --gray-60: #B9BDC1;
+    --gray-65: #CDD1D5;
+    --gray-70: #DCE0E3;
+    --gray-75: #E7EAED;
+    --gray-80: #EFF2F5;
+    --gray-85: #F4F7FA;
+    --gray-90: #F7FAFD;
+    --gray-95: #FCFEFE;
+
+    /* Light mode colors */
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --card-bg: #ffffff;
+    --card-border: #e5e5e5;
+    --navbar-bg: #ffffff;
+}
+
+/* Dark mode base colors */
+body.dark {
+    --background-color: var(--gray-30);
+    --text-color: var(--gray-80);
+    --card-bg: var(--gray-25);
+    --card-border: var(--gray-35);
+    --navbar-bg: var(--gray-25);
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Dark Mode Variables */
+:root {
+    --gray-5: #010101;
+    --gray-10: #040404;
+    --gray-15: #070808;
+    --gray-20: #0D0D0E;
+    --gray-25: #141516;
+    --gray-30: #1E2022;
+    --gray-35: #2D2F31;
+    --gray-40: #404346;
+    --gray-45: #5B5E62;
+    --gray-50: #7C8084;
+    --gray-55: #9DA1A5;
+    --gray-60: #B9BDC1;
+    --gray-65: #CDD1D5;
+    --gray-70: #DCE0E3;
+    --gray-75: #E7EAED;
+    --gray-80: #EFF2F5;
+    --gray-85: #F4F7FA;
+    --gray-90: #F7FAFD;
+    --gray-95: #FCFEFE;
+
+    /* Light mode colors */
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --card-bg: #ffffff;
+    --card-border: #e5e5e5;
+    --navbar-bg: #ffffff;
+}
+
+/* Dark mode base styles */
+body.dark {
+    --background-color: var(--gray-30);
+    --text-color: var(--gray-80);
+    --card-bg: var(--gray-25);
+    --card-border: var(--gray-35);
+    --navbar-bg: var(--gray-25);
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Hover styles for text to change to black in both light and dark modes */
+.navbar .links li a:hover,
+.grid-1:hover .name,
+.grid-1:hover .title,
+.grid-1:hover .para-text,
+.profile-menu li a:hover,
+.mode-toggle .label-light:hover,
+.mode-toggle .label-dark:hover,
+.post-title:hover,
+.post-excerpt:hover,
+.nav-tab:hover {
+    color: black !important;
+}
+
+/* Same hover styles for dark mode */
+body.dark .navbar .links li a:hover,
+body.dark .grid-1:hover .name,
+body.dark .grid-1:hover .title,
+body.dark .grid-1:hover .para-text,
+body.dark .profile-menu li a:hover,
+body.dark .mode-toggle .label-light:hover,
+body.dark .mode-toggle .label-dark:hover,
+body.dark .post-title:hover,
+body.dark .post-excerpt:hover,
+body.dark .nav-tab:hover {
+    color: black !important;
+}
+
+/* Footer Dark Mode Styles */
+body.dark .footerbg {
+    background-color: #000000 !important;
+}
+
+body.dark .footer {
+    color: #ffffff !important;
+}
+
+body.dark .footer .footerleft .flexL .footer-question,
+body.dark .footer .footerleft .flexL .footer-join,
+body.dark .footer .footerleft .copyright,
+body.dark .footer .footerright .flexR .footer-question1,
+body.dark .footer .footerright .flexR .footer-join1 {
+    color: #ffffff !important;
+}
+
+body.dark .footer .footerleft .flexL .footer-join,
+body.dark .footer .footerright .flexR .footer-join1 {
+    text-decoration-color: #ffffff;
+}
+
+/* Dark mode footer links */
+body.dark .footer a {
+    color: #ffffff !important;
+}
+
+body.dark .footer a:hover {
+    color: black !important;
+    /* Keeps your requirement for black text on hover */
 }

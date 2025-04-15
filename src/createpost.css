@@ -76,3 +76,76 @@
     background-color: #95a5a6;
     cursor: not-allowed;
 }
+
+/* Center the Choose File button */
+.file-upload-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.choose-file-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.choose-file-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Dark mode styles for the Choose File button */
+body.dark .choose-file-btn {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+body.dark .choose-file-btn:hover {
+    background-color: #34495e;
+}
+
+/* Dark mode styles for CreatePost */
+body.dark .create-post-container {
+    background-color: var(--card-bg);
+    box-shadow: 0 0 15px var(--shadow);
+}
+
+body.dark .create-post-container h2 {
+    color: var(--heading-color);
+}
+
+body.dark .create-post-form label {
+    color: var(--text-color);
+}
+
+body.dark .create-post-form input,
+body.dark .create-post-form textarea {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text-color);
+}
+
+body.dark .create-post-form input:focus,
+body.dark .create-post-form textarea:focus {
+    border-color: #4a90e2;
+}
+
+body.dark .submit-button {
+    background-color: var(--button-bg);
+}
+
+body.dark .submit-button:hover {
+    background-color: var(--button-hover);
+}
+
+body.dark .error-message {
+    color: #ff6b6b;
+    background-color: rgba(255, 107, 107, 0.1);
+}

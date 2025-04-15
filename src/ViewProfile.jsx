@@ -92,15 +92,15 @@ function ViewProfile() {
             <div className="profile-header">
                 {/* Profile Avatar */}
                 <div className="profile-avatar-container">
-                    <div className="profile-avatar">
-                        {profile.avatarUrl ? (
-                            <img src={profile.avatarUrl} alt={profile.username} />
-                        ) : (
-                            <div className="avatar-initials">
-                                {profile.username.charAt(0).toUpperCase()}
-                            </div>
-                        )}
-                    </div>
+                    <img
+                        src={profile?.avatarUrl || '/default-avatar.png'}
+                        alt={`${profile?.username || 'User'}'s avatar`}
+                        className="profile-avatar"
+                        onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = '/default-avatar.png';
+                        }}
+                    />
                 </div>
 
                 {/* Profile Info */}
@@ -124,7 +124,7 @@ function ViewProfile() {
                     )}
 
                     {isOwnProfile && (
-                        <Link to="/profile/edit" className="action-button edit-profile-button">
+                        <Link to="/profile" className="action-button edit-profile-button">
                             Edit Profile
                         </Link>
                     )}

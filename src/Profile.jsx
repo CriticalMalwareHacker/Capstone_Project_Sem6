@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
 function Profile() {
     const navigate = useNavigate();
+    const { userId } = useParams();
     const { currentUser } = useAuth();
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -17,6 +18,9 @@ function Profile() {
         title: '',
         content: ''
     });
+    const [followers, setFollowers] = useState([]);
+    const [following, setFollowing] = useState([]);
+
 
     // State for profile editing
     const [isEditingProfile, setIsEditingProfile] = useState(false);
@@ -24,7 +28,70 @@ function Profile() {
         bio: currentUser?.bio || '',
         website: currentUser?.website || ''
     });
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                if (!userId) {
+                    setError('User ID is missing');
+                    setIsLoading(false);
+                    return;
+                }
 
+                // Get user profile
+                const profileResponse = await axios.get(`http://localhost:5000/api/profile/${userId}`);
+                setProfile(profileResponse.data);
+
+                // Check if current user is following this profile
+                if (currentUser && profileResponse.data.followers) {
+                    setIsFollowing(profileResponse.data.followers.some(follower =>
+                        follower._id === currentUser._id
+                    ));
+                }
+
+                // Get user posts
+                const postsResponse = await axios.get(`http://localhost:5000/api/posts/author/${userId}`);
+                setPosts(postsResponse.data);
+            } catch (err) {
+                setError('Failed to load profile');
+                console.error(err);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchProfile();
+    }, [userId, currentUser]);
+
+    useEffect(() => {
+        const fetchUserFollowers = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/profile/followers', {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                });
+                setFollowers(response.data);
+            } catch (err) {
+                setError('Failed to fetch followers');
+            }
+        };
+
+        const fetchUserFollowing = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/profile/following', {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                });
+                setFollowing(response.data);
+            } catch (err) {
+                setError('Failed to fetch following');
+            }
+        };
+
+        fetchUserFollowers();
+        fetchUserFollowing();
+    }, []);
     // Handle avatar image upload
     const handleAvatarUpload = async (e) => {
         const file = e.target.files[0];
@@ -216,9 +283,15 @@ function Profile() {
                                     </a>
                                 </p>
                             )}
+                            <div className="profile-follower-count">
+                                <span>{posts.length} Posts</span>
+                                <span> · {Profile?.followers?.length || 0} Followers</span>
+                                <span> · {Profile?.following?.length || 0} Following</span>
+                            </div>
                             <button className="action-button edit-profile-button" onClick={() => setIsEditingProfile(true)}>
                                 Edit Profile
                             </button>
+
                         </>
                     )}
                 </div>

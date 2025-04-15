@@ -24,34 +24,30 @@ const FileUpload = ({ handleImageChange, imagePreview }) => {
     };
 
     return (
-        <div className="file-upload-container">
-            <input
-                type="file"
-                ref={inputRef}
-                onChange={handleFileChange}
-                accept="image/*"
-                className="file-input"
-                id="image-upload"
-                style={{ display: 'none' }}
-            />
-            <label
-                htmlFor="image-upload"
-                className="custom-file-upload"
-                onClick={triggerFileInput}
-            >
-                Choose File
-            </label>
-            <span className="file-name">{fileName}</span>
+        <div className="file-upload-section">
+            <h3>Add Featured Image</h3>
+            <div className="file-upload-container">
+                <button type="button" onClick={triggerFileInput} className="choose-file-btn">
+                    Choose File
+                </button>
+                <input
+                    ref={inputRef}
+                    type="file"
+                    onChange={handleFileChange}
+                    style={{ display: 'none' }}
+                    accept="image/*"
+                />
 
-            {imagePreview && (
-                <div className="image-preview-container">
-                    <img
-                        src={imagePreview}
-                        alt="Preview"
-                        className="image-preview"
-                    />
-                </div>
-            )}
+                {imagePreview && (
+                    <div className="image-preview-container">
+                        <img
+                            src={imagePreview}
+                            alt="Preview"
+                            className="image-preview"
+                        />
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
