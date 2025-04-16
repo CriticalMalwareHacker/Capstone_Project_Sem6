@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import RichTextEditor from './RichTextEditor';
 import { useAuth } from './AuthContext';
 
 function Profile() {
@@ -92,6 +93,7 @@ function Profile() {
         fetchUserFollowers();
         fetchUserFollowing();
     }, []);
+
     // Handle avatar image upload
     const handleAvatarUpload = async (e) => {
         const file = e.target.files[0];
@@ -183,10 +185,15 @@ function Profile() {
         setEditingPostId(post._id);
         setPostFormData({
             title: post.title,
-            content: post.content
+            content: post.content // This will be passed to RichTextEditor
         });
     };
-
+    const handleContentChange = (newContent) => {
+        setPostFormData(prev => ({
+            ...prev,
+            content: newContent
+        }));
+    };
     // Handle post form input changes
     const handlePostInputChange = (e) => {
         const { name, value } = e.target;
@@ -234,7 +241,7 @@ function Profile() {
                             <div className="avatar-initials">{currentUser?.username?.charAt(0)?.toUpperCase()}</div>
                         )}
                         <div className="avatar-upload-overlay">
-                            📷 Change
+                            ðŸ“· Change
                         </div>
                         <input
                             type="file"
@@ -285,8 +292,8 @@ function Profile() {
                             )}
                             <div className="profile-follower-count">
                                 <span>{posts.length} Posts</span>
-                                <span> · {Profile?.followers?.length || 0} Followers</span>
-                                <span> · {Profile?.following?.length || 0} Following</span>
+                                <span> Â· {Profile?.followers?.length || 0} Followers</span>
+                                <span> Â· {Profile?.following?.length || 0} Following</span>
                             </div>
                             <button className="action-button edit-profile-button" onClick={() => setIsEditingProfile(true)}>
                                 Edit Profile
@@ -323,12 +330,21 @@ function Profile() {
                                                 onChange={handlePostInputChange}
                                                 className="edit-post-title"
                                             />
+
                                             <textarea
                                                 name="content"
                                                 value={postFormData.content}
                                                 onChange={handlePostInputChange}
                                                 className="edit-post-content"
                                             />
+                                            <RichTextEditor
+                                                initialContent={postFormData.content}
+                                                onChange={handleContentChange}
+                                            />
+                                            <div className="edit-buttons">
+                                                <button onClick={() => handleUpdatePost(post._id)}>Save</button>
+                                                <button onClick={cancelEditing}>Cancel</button>
+                                            </div>
                                             <div className="post-actions">
                                                 <button className="action-button update-post-button" onClick={() => handleUpdatePost(post._id)}>
                                                     Update

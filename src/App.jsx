@@ -9,8 +9,6 @@ import Home from "./Home.jsx";
 import SignIn from "./Signin.jsx";
 import Signup from "./Signup.jsx";
 import Blogs from "./blogs.jsx";
-import Authors from "./authors.jsx";
-import AboutUs from "./about_us.jsx";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
 import Singlepost from "./Singlepost.jsx";
@@ -40,10 +38,6 @@ function App() {
                             <Route path="/blogs" element={<Blogs searchQuery={searchQuery} />} />
                             <Route path="/blog/:slug" element={<Singlepost />} />
                             <Route path="/create" element={<CreatePost />} />
-
-                            {/* Other routes */}
-                            <Route path="/authors" element={<Authors />} />
-                            <Route path="/about" element={<AboutUs />} />
 
                             {/* Redirects */}
                             <Route path="/blog" element={<Navigate to="/blogs" replace />} />

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
-import BlogyTech from './assets/Blogy.tech.png'; // Adjust path as needed
+import logo from './assets/logo.png';
 function Navbar({ onSearch }) {
     const { currentUser, logout } = useAuth();
     const navigate = useNavigate();
@@ -54,7 +54,7 @@ function Navbar({ onSearch }) {
         <nav className="navbar">
             <div className="logo">
                 <NavLink to="/">
-                    <img src={BlogyTech} alt="BlogyTech Logo" />
+                    <img src={logo} alt="BlogyTech Logo" />
                 </NavLink>
             </div>
 

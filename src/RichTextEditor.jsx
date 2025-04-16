@@ -29,7 +29,7 @@ const RichTextEditor = ({ initialContent, onChange }) => {
             <div className="custom-block-dropdown">
                 <div className="dropdown-selector" onClick={onExpandEvent}>
                     <span>{labels[currentBlockType]}</span>
-                    <span className="dropdown-arrow">▼</span>
+                    <span className="dropdown-arrow">â–¼</span>
                 </div>
 
                 {expanded && (

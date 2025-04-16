@@ -48,7 +48,7 @@ header {
 }
 
 .navbar .logo a img {
-    height: 2rem;
+    height: 5rem;
 }
 
 .navbar .links {
@@ -2023,6 +2023,7 @@ body.dark .signup-button {
 .editor-wrapper {
     border-radius: 4px;
     margin: 1rem 0;
+
 }
 
 /* Add these styles to style.css */
@@ -2755,4 +2756,27 @@ body.dark .footer a {
 body.dark .footer a:hover {
     color: black !important;
     /* Keeps your requirement for black text on hover */
+}
+
+.rich-text-editor-container {
+    direction: ltr;
+}
+
+.rich-text-editor {
+    direction: ltr;
+    text-align: left;
+}
+
+.public-DraftEditor-content {
+    direction: ltr;
+    text-align: left;
+}
+
+.rich-text-editor-container[dir="ltr"] {
+    direction: ltr !important;
+}
+
+.rich-text-editor-container[dir="ltr"] * {
+    direction: ltr !important;
+    text-align: left !important;
 }
